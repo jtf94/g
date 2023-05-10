@@ -1,0 +1,3980 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Blockly-gamepad </title>
+
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+
+    <!--Blockly-->
+    <script src="libs/blockly/blockly_compressed.js"></script>
+    <script src="libs/blockly/blocks_compressed.js"></script>
+    <script src="javascript_compressed.js"></script> 
+    <script src="php_compressed.js"></script>
+    <script src="python_compressed.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+
+
+
+
+    <script >
+Blockly.Msg.LANG_VARIABLES_SET_TITLE = "set %1 to %2";
+
+    </script>   
+
+
+
+
+    <!--blockly-gamepad-->
+    <script src="libs/gamepad/gamepad.min.js"></script>
+</head>
+
+<body>
+    <header>
+        <!--title-->
+        <span class="title">
+            <div>
+                <a style="font-size: 90%;">PiciTown</a> 
+                <a style="font-size: 80%;">&</a> 
+                <a style="font-size: 90%;">PolliGame</a>: El laberinto
+            </div>
+        </span>
+        <vr></vr>
+        <!--start switch-->
+        <span class="switch_span">Inicio</span>
+        <label class="switch">
+            <input id="start_check" type="checkbox">
+            <span class="slider round"></span>
+        </label>
+        <vr></vr>
+        <!--categories switch-->
+        <span class="switch_span">Categorias</span>
+        <label class="switch">
+            <input id="categories_check" type="checkbox">
+            <span class="slider round"></span>
+        </label>
+        <vr></vr>
+
+  
+        <!--level buttons-->
+        <span class="switch_span">Niveles</span>
+        <button class="button level" id="level_1" onmouseenter="entradaN1()" onmouseleave="salidaN1()">1</button>
+        <button class="button level" id="level_2" onmouseenter="entradaN2()" onmouseleave="salidaN2()">2</button>
+        <button class="button level" id="level_3" onmouseenter="entradaN3()" onmouseleave="salidaN3()">3</button>
+        <button class="button level" id="level_4" onmouseenter="entradaN4()" onmouseleave="salidaN4()">4</button>
+        <button class="button level" id="level_5" onmouseenter="entradaN5()" onmouseleave="salidaN5()">5</button>
+        <button class="button level" id="level_6" onmouseenter="entradaN6()" onmouseleave="salidaN6()">6</button>
+        <button class="button level" id="level_7" onmouseenter="entradaN7()" onmouseleave="salidaN7()">7</button>
+        <button class="button level" id="level_8" onmouseenter="entradaN8()" onmouseleave="salidaN8()">8</button>
+        <button class="button level" id="level_9" onmouseenter="entradaN9()" onmouseleave="salidaN9()">9</button>
+        <button class="button level" id="level_10" onmouseenter="entradaN10()" onmouseleave="salidaN10()">10</button>
+        <button class="button level" id="level_11" onmouseenter="entradaN11()" onmouseleave="salidaN10()">11</button>
+        <button class="button level" id="level_12" onmouseenter="entradaN12()" onmouseleave="salidaN12()">12</button>
+        <button class="button level" id="level_13" onmouseenter="entradaN13()" onmouseleave="salidaN13()">13</button>
+        <button class="button level" id="level_14" onmouseenter="entradaN14()" onmouseleave="salidaN14()">14</button>
+        <button class="button level" id="level_15" onmouseenter="entradaN15()" onmouseleave="salidaN15()">15</button>
+        <button class="button level" id="level_16" onmouseenter="entradaN16()" onmouseleave="salidaN16()">16</button>
+        <button class="button level" id="level_17" onmouseenter="entradaN17()" onmouseleave="salidaN17()">17</button>
+        <button class="button level" id="level_18" onmouseenter="entradaN18()" onmouseleave="salidaN18()">18</button>
+        <button class="button level" id="level_19" onmouseenter="entradaN19()" onmouseleave="salidaN19()">19</button>
+        <button class="button level" id="level_20" onmouseenter="entradaN20()" onmouseleave="salidaN20()">20</button>
+        <vr></vr>
+    </header>
+
+    <main>
+        <!--game div-->
+        <div id="game-div">
+            <!--game 1-->
+            <svg xmlns="http://www.w3.org/2000/svg" style="display: none" version="1.1" id="1" width="400px"
+                height="400px" viewBox="0 0 400 400">
+                <image xlink:href="images/nivel_1.png" class="maze" x="0" y="-1" width="400" height="399"></image>
+                <image id="finish1" xlink:href="images/Pici_Elfa.png" height="45" width="35" x="205" y="170"></image>
+                <clipPath id="pegmanClipPath1">
+                    <rect id="clipRect1" width="49" height="52" x="101" y="191"></rect>
+                </clipPath>
+                <image id="pegman1" xlink:href="images/pegman.png" height="80" width="1029"
+                    clip-path="url(#pegmanClipPath1)" x="65" y="180" transform="rotate(0, 0, 0)"></image>
+            </svg>
+            
+            <!--game 2-->
+            <svg xmlns="http://www.w3.org/2000/svg" style="display: none" version="1.1" id="2" width="400px"
+                height="400px" viewBox="0 0 400 400">
+                <image xlink:href="images/nivel_2.png" class="maze" x="0" y="0" width="400" height="400"></image>
+                <image id="finish2" xlink:href="images/Pici_Elfa.png" height="45" width="35" x="205" y="170"></image>
+                <clipPath id="2pegmanClipPath">
+                    <rect id="clipRect2" width="49" height="52" x="101" y="191"></rect>
+                </clipPath>
+                <image id="pegman2" xlink:href="images/pegman.png" height="50" width="1029"  
+                    clip-path="url(#2pegmanClipPath)" x="201" y="10" transform="rotate(0, 0, 0)"></image>
+            </svg>
+            
+            <!--game 3-->
+            <svg xmlns="http://www.w3.org/2000/svg" style="display: none" version="1.1" id="3" width="400px"
+                height="400px" viewBox="0 0 400 400">
+                <image xlink:href="images/nivel_1.png" class="maze" x="0" y="-1" width="400" height="399"></image>
+                <image id="finish3" xlink:href="images/Pici_Elfa.png" height="45" width="35" x="355" y="180"></image>
+                <clipPath id="pegmanClipPath3">
+                    <rect id="clipRect3" width="49" height="52" x="101" y="191"></rect>
+                </clipPath>
+                <image id="pegman3" xlink:href="images/pegman.png" height="50" width="1029"
+                    clip-path="url(#pegmanClipPath3)" x="201" y="10" transform="rotate(0, 0, 0)"></image>
+            </svg>
+            
+             <!--game 4-->
+            <svg xmlns="http://www.w3.org/2000/svg" style="display: none" version="1.1" id="4" width="400px"
+                height="400px" viewBox="0 0 400 400">
+                <image xlink:href="images/nivel_4.png" class="maze" x="0" y="-1" width="400" height="399"></image>
+                <image id="finish4" xlink:href="images/Pici_Elfa.png" height="45" width="35" x="210" y="350"></image>
+                <clipPath id="pegmanClipPath4">
+                    <rect id="clipRect4" width="49" height="52" x="101" y="191"></rect>
+                </clipPath>
+                <image id="pegman4" xlink:href="images/pegman.png" height="50" width="1029"
+                    clip-path="url(#pegmanClipPath4)" x="201" y="10" transform="rotate(0, 0, 0)"></image>
+            </svg>
+            
+            <!--game 5-->
+            <svg xmlns="http://www.w3.org/2000/svg" style="display: none" version="1.1" id="5" width="400px"
+                height="400px" viewBox="0 0 400 400">
+                <image xlink:href="images/nivel_3.png" class="maze" x="0" y="-1" width="400" height="399"></image>
+                <image id="finish5" xlink:href="images/Pici_Elfa.png" height="45" width="35" x="115" y="190"></image>
+                <clipPath id="pegmanClipPath5">
+                    <rect id="clipRect5" width="49" height="52" x="101" y="191"></rect>
+                </clipPath>
+                <image id="pegman5" xlink:href="images/pegman.png" height="60" width="1000"
+                    clip-path="url(#pegmanClipPath5)" x="300" y="0" transform="rotate(0, 0, 0)"></image>
+            </svg>
+            
+            <!--game 6-->
+            <svg xmlns="http://www.w3.org/2000/svg" style="display: none" version="1.1" id="6" width="400px"
+                height="400px" viewBox="0 0 400 400">
+                <image xlink:href="images/nivel_1.png" class="maze" x="0" y="-1" width="400" height="399"></image>
+                <image id="finish6" xlink:href="images/Pici_Elfa.png" height="45" width="35" x="310" y="200"></image>
+                <clipPath id="pegmanClipPath6">
+                    <rect id="clipRect6" width="49" height="52" x="101" y="191"></rect>
+                </clipPath>
+                <image id="pegman6" xlink:href="images/pegman.png" height="50" width="1029"
+                    clip-path="url(#pegmanClipPath6)" x="-95" y="191" transform="rotate(0, 0, 0)"></image>
+            </svg>
+            
+            <!--game 7-->
+            <svg xmlns="http://www.w3.org/2000/svg" style="display: none" version="1.1" id="7" width="400px"
+                height="400px" viewBox="0 0 400 400">
+                <image xlink:href="images/nivel_7.png" class="maze" x="0" y="0" width="400" height="400"></image>
+                <image id="finish7" height="50" width="45" x="250" y="180"></image>
+                <image id="finish7" xlink:href="images/Pici_Elfa.png" height="45" width="35" x="155" y="190"></image>
+                <clipPath id="7pegmanClipPath">
+                    <rect id="clipRect7" width="49" height="52" x="101" y="191"></rect>
+                </clipPath>
+                <image id="pegman7" xlink:href="images/pegman.png" height="52" width="1029"  
+                    clip-path="url(#7pegmanClipPath)" x="-95" y="191" transform="rotate(0, 0, 0)"></image>
+            </svg>
+            
+              <!--game 8-->
+            <svg xmlns="http://www.w3.org/2000/svg" style="display: none" version="1.1" id="8" width="400px"
+                height="400px" viewBox="0 0 400 400">
+                <image xlink:href="images/nivel_8.png" class="maze" x="0" y="0" width="400" height="400"></image>
+                <image id="finish8" xlink:href="images/Pici_Elfa.png" height="45" width="35" x="260" y="190"></image>
+                <clipPath id="8pegmanClipPath">
+                    <rect id="clipRect8" width="49" height="52" x="101" y="191"></rect>
+                </clipPath>
+                <image id="pegman8" xlink:href="images/pegman.png" height="52" width="1029"  
+                    clip-path="url(#8pegmanClipPath)" x="-95" y="191" transform="rotate(0, 0, 0)"></image>
+            </svg>
+            
+             <!--game 9-->
+            <svg xmlns="http://www.w3.org/2000/svg" style="display: none" version="1.1" id="9" width="400px"
+                height="400px" viewBox="0 0 400 400">
+                <image xlink:href="images/nivel_9.png" class="maze" x="0" y="0" width="400" height="400"></image>
+                <image id="finish9" xlink:href="images/Pici_Elfa.png" height="45" width="35" x="310" y="290"></image>
+                <clipPath id="9pegmanClipPath">
+                    <rect id="clipRect9" width="49" height="52" x="101" y="191"></rect>
+                </clipPath>
+                <image id="pegman9" xlink:href="images/pegman.png" height="52" width="1029"  
+                    clip-path="url(#9pegmanClipPath)" x="-95" y="191" transform="rotate(0, 0, 0)"></image>
+            </svg>
+            
+             <!--game 10-->
+            <svg xmlns="http://www.w3.org/2000/svg" style="display: none" version="1.1" id="10" width="400px"
+                height="400px" viewBox="0 0 400 400">
+                <image xlink:href="images/nivel_10.png" class="maze" x="0" y="0" width="400" height="400"></image>
+                <image id="finish10" xlink:href="images/Pici_Elfa.png" height="45" width="35" x="310" y="290"></image>
+                <clipPath id="10pegmanClipPath">
+                    <rect id="clipRect10" width="49" height="52" x="101" y="191"></rect>
+                </clipPath>
+                <image id="pegman10" xlink:href="images/pegman.png" height="52" width="1029"  
+                    clip-path="url(#10pegmanClipPath)" x="-95" y="191" transform="rotate(0, 0, 0)"></image>
+            </svg>
+            
+            <!--game 11-->
+            <svg xmlns="http://www.w3.org/2000/svg" style="display: none" version="1.1" id="11" width="400px"
+                height="400px" viewBox="0 0 400 400">
+                <image xlink:href="images/nivel_1.png" class="maze" x="0" y="-1" width="400" height="399"></image>
+                <image id="finish11" xlink:href="images/Pici_Elfa.png" height="45" width="35" x="205" y="170"></image>
+                <clipPath id="pegmanClipPath11">
+                    <rect id="clipRect11" width="49" height="52" x="101" y="191"></rect>
+                </clipPath>
+                <image id="pegman11" xlink:href="images/pegman.png" height="80" width="1029"
+                    clip-path="url(#pegmanClipPath11)" x="65" y="180" transform="rotate(0, 0, 0)"></image>
+            </svg>
+            
+             <!--game 12-->
+            <svg xmlns="http://www.w3.org/2000/svg" style="display: none" version="1.1" id="12" width="400px"
+                height="400px" viewBox="0 0 400 400">
+                <image xlink:href="images/nivel_2.png" class="maze" x="0" y="0" width="400" height="400"></image>
+                <image id="finish12" xlink:href="images/Pici_Elfa.png" height="45" width="35" x="205" y="170"></image>
+                <clipPath id="12pegmanClipPath">
+                    <rect id="clipRect12" width="49" height="52" x="101" y="191"></rect>
+                </clipPath>
+                <image id="pegman12" xlink:href="images/pegman.png" height="50" width="1029"  
+                    clip-path="url(#12pegmanClipPath)" x="201" y="10" transform="rotate(0, 0, 0)"></image>
+            </svg>
+             <!--game 13-->
+            <svg xmlns="http://www.w3.org/2000/svg" style="display: none" version="1.1" id="13" width="400px"
+                height="400px" viewBox="0 0 400 400">
+                <image xlink:href="images/nivel_1.png" class="maze" x="0" y="-1" width="400" height="399"></image>
+                <image id="finish13" xlink:href="images/Pici_Elfa.png" height="45" width="35" x="355" y="180"></image>
+                <clipPath id="pegmanClipPath13">
+                    <rect id="clipRect13" width="49" height="52" x="101" y="191"></rect>
+                </clipPath>
+                <image id="pegman13" xlink:href="images/pegman.png" height="50" width="1029"
+                    clip-path="url(#pegmanClipPath13)" x="201" y="10" transform="rotate(0, 0, 0)"></image>
+            </svg>
+            
+            <!--game 14-->
+            <svg xmlns="http://www.w3.org/2000/svg" style="display: none" version="1.1" id="14" width="400px"
+                height="400px" viewBox="0 0 400 400">
+                <image xlink:href="images/nivel_4.png" class="maze" x="0" y="-1" width="400" height="399"></image>
+                <image id="finish14" xlink:href="images/Pici_Elfa.png" height="45" width="35" x="210" y="350"></image>
+                <clipPath id="pegmanClipPath14">
+                    <rect id="clipRect14" width="49" height="52" x="101" y="191"></rect>
+                </clipPath>
+                <image id="pegman14" xlink:href="images/pegman.png" height="50" width="1029"
+                    clip-path="url(#pegmanClipPath14)" x="201" y="10" transform="rotate(0, 0, 0)"></image>
+            </svg>
+            
+            <!--game 15-->
+            <svg xmlns="http://www.w3.org/2000/svg" style="display: none" version="1.1" id="15" width="400px"
+                height="400px" viewBox="0 0 400 400">
+                <image xlink:href="images/nivel_3.png" class="maze" x="0" y="-1" width="400" height="399"></image>
+                <image id="finish15" xlink:href="images/Pici_Elfa.png" height="45" width="35" x="115" y="190"></image>
+                <clipPath id="pegmanClipPath15">
+                    <rect id="clipRect15" width="49" height="52" x="101" y="191"></rect>
+                </clipPath>
+                <image id="pegman15" xlink:href="images/pegman.png" height="60" width="1000"
+                    clip-path="url(#pegmanClipPath15)" x="300" y="0" transform="rotate(0, 0, 0)"></image>
+            </svg>
+            
+             <!--game 16-->
+            <svg xmlns="http://www.w3.org/2000/svg" style="display: none" version="1.1" id="16" width="400px"
+                height="400px" viewBox="0 0 400 400">
+                <image xlink:href="images/nivel_1.png" class="maze" x="0" y="-1" width="400" height="399"></image>
+                <image id="finish16" xlink:href="images/Pici_Elfa.png" height="45" width="35" x="310" y="200"></image>
+                <clipPath id="pegmanClipPath16">
+                    <rect id="clipRect16" width="49" height="52" x="101" y="191"></rect>
+                </clipPath>
+                <image id="pegman16" xlink:href="images/pegman.png" height="50" width="1029"
+                    clip-path="url(#pegmanClipPath16)" x="-95" y="191" transform="rotate(0, 0, 0)"></image>
+            </svg>
+            
+            <!--game 17-->
+            <svg xmlns="http://www.w3.org/2000/svg" style="display: none" version="1.1" id="17" width="400px"
+                height="400px" viewBox="0 0 400 400">
+                <image xlink:href="images/nivel_7.png" class="maze" x="0" y="0" width="400" height="400"></image>
+                <image id="finish17" height="50" width="45" x="250" y="180"></image>
+                <image id="finish17" xlink:href="images/Pici_Elfa.png" height="45" width="35" x="155" y="190"></image>
+                <clipPath id="17pegmanClipPath">
+                    <rect id="clipRect17" width="49" height="52" x="101" y="191"></rect>
+                </clipPath>
+                <image id="pegman17" xlink:href="images/pegman.png" height="52" width="1029"  
+                    clip-path="url(#17pegmanClipPath)" x="-95" y="191" transform="rotate(0, 0, 0)"></image>
+            </svg>
+            
+            <!--game 18-->
+            <svg xmlns="http://www.w3.org/2000/svg" style="display: none" version="1.1" id="18" width="400px"
+                height="400px" viewBox="0 0 400 400">
+                <image xlink:href="images/nivel_8.png" class="maze" x="0" y="0" width="400" height="400"></image>
+                <image id="finish18" xlink:href="images/Pici_Elfa.png" height="45" width="35" x="260" y="190"></image>
+                <clipPath id="18pegmanClipPath">
+                    <rect id="clipRect18" width="49" height="52" x="101" y="191"></rect>
+                </clipPath>
+                <image id="pegman18" xlink:href="images/pegman.png" height="52" width="1029"  
+                    clip-path="url(#18pegmanClipPath)" x="-95" y="191" transform="rotate(0, 0, 0)"></image>
+            </svg>
+            
+            <!--game 19-->
+            <svg xmlns="http://www.w3.org/2000/svg" style="display: none" version="1.1" id="19" width="400px"
+                height="400px" viewBox="0 0 400 400">
+                <image xlink:href="images/nivel_9.png" class="maze" x="0" y="0" width="400" height="400"></image>
+                <image id="finish19" xlink:href="images/Pici_Elfa.png" height="45" width="35" x="310" y="290"></image>
+                <clipPath id="19pegmanClipPath">
+                    <rect id="clipRect19" width="49" height="52" x="101" y="191"></rect>
+                </clipPath>
+                <image id="pegman19" xlink:href="images/pegman.png" height="52" width="1029"  
+                    clip-path="url(#19pegmanClipPath)" x="-95" y="191" transform="rotate(0, 0, 0)"></image>
+            </svg>
+            
+             <!--game 20-->
+            <svg xmlns="http://www.w3.org/2000/svg" style="display: none" version="1.1" id="20" width="400px"
+                height="400px" viewBox="0 0 400 400">
+                <image xlink:href="images/nivel_10.png" class="maze" x="0" y="0" width="400" height="400"></image>
+                <image id="finish20" xlink:href="images/Pici_Elfa.png" height="45" width="35" x="360" y="50"></image>
+                <clipPath id="20pegmanClipPath">
+                    <rect id="clipRect20" width="49" height="52" x="101" y="191"></rect>
+                </clipPath>
+                <image id="pegman20" xlink:href="images/pegman.png" height="52" width="1029"  
+                    clip-path="url(#20pegmanClipPath)" x="-95" y="191" transform="rotate(0, 0, 0)"></image>
+            </svg>
+            
+            <!--capacity div-->
+            <div id="capacity" style="display: none;">Tu tienes <span id="capacityNumber">10</span> blocks left.</div>
+            <!---------------------------------buttons--------------------------------------------->
+            <div class="buttons">
+                <button id="play" class="button green" style="grid-area: 1" onmouseenter="entradaplay()" onmouseleave="salidaplay()">Ejecutar</button>
+                
+               <!--  <button id="pause" class="button green" style="grid-area: 2"
+                onmouseenter="entradapausa()" onmouseleave="salidapausa()">Pausa</button>
+                <hr> -->
+                <button id="forward" class="button blue" style="grid-area: 2"
+                onmouseenter="entradaadelante()" onmouseleave="salidaadelante()">Adelantar</button>
+                
+                <button id="backward" class="button blue" style="grid-area: 3"
+                onmouseenter="entradaatras()" onmouseleave="salidaatras()">Retroceder</button>
+            </div>
+            <!---------------------------SalidaDivBotones------------------------------------->
+        </div>
+        <!--workspace div-->
+        <div id="blockly-editor">
+            <div id="blockly-div"></div>
+            <!--toolbox without categories-->
+            <xml id="toolbox" style="display: none">
+                <block type="move"></block>
+                <block type="turn"></block>
+                <block type="turn">
+                    <field name="DIRECTION">3</field>
+                </block>
+                <block type="repeat_until"></block>
+                <block type="if_path"></block>
+                <block type="if_else_path"></block>
+            </xml>
+            <!--toolbox whit categories-->
+            <xml id="toolbox_c" style="display: none">
+                <category name="Controls" colour="285">
+                    <block type="move"></block>
+                    <block type="turn"></block>
+                    <block type="turn">
+                        <field name="DIRECTION">3</field>
+                    </block>
+                </category>
+                <category name="Logic" colour="120">
+                    <block type="repeat_until"></block>
+                    <block type="if_path"></block>
+                    <block type="if_else_path"></block>
+                </category>
+            </xml>
+        </div>
+    </main>
+
+    <!--load global parameters-->
+    <script>
+        // get parameters in url
+        function getUrlVars() {
+            var vars = {};
+            var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
+                vars[key] = value;
+            });
+            return vars;
+        }
+
+        // global vars
+        let {
+            start,
+            categories,
+            id
+        } = getUrlVars()
+
+        // update parameters
+        start = start != undefined
+        categories = categories != undefined
+        id = (id == '0') ? 0 : 0
+
+
+
+        // update the checkers
+        if (start) document.getElementById('start_check').checked = true
+        if (categories) document.getElementById('categories_check').checked = true
+
+        // set the toolbox
+        const toolbox = document.getElementById(categories ? 'toolbox_c' : 'toolbox')
+        
+    </script>
+
+    <!--scripts-->
+    <script src="js/levels.js"></script>
+    <script src="js/gui.js"></script>
+    <script src="js/game.js"></script>
+    <script src="js/index.js"></script>
+    <!--<script src="encuesta.html"></script>-->
+
+    
+    <button onclick="guardarBloques()">Show JavaScript</button>
+    <button onclick="generarCodigo()">Generar Código</button>
+    <button onclick="translateCode()">Traducir a JavaScript</button>
+    <pre id="output"></pre>
+
+    <!--link event to buttons-->
+    <script>
+        // link the buttons
+        //document.getElementById('load').onclick = () => game.loadCode()
+        document.getElementById('level_1').onclick = () => game.loadLevel(levels[id = 0]) 
+        document.getElementById('level_2').onclick = () => game.loadLevel(levels[id = 1]) 
+        document.getElementById('level_3').onclick = () => game.loadLevel(levels[id = 2]) 
+        document.getElementById('level_4').onclick = () => game.loadLevel(levels[id = 3]) 
+        document.getElementById('level_5').onclick = () => game.loadLevel(levels[id = 4]) 
+        document.getElementById('level_6').onclick = () => game.loadLevel(levels[id = 5]) 
+        document.getElementById('level_7').onclick = () => game.loadLevel(levels[id = 6]) 
+        document.getElementById('level_8').onclick = () => game.loadLevel(levels[id = 7]) 
+        document.getElementById('level_9').onclick = () => game.loadLevel(levels[id = 8]) 
+        document.getElementById('level_10').onclick = () => game.loadLevel(levels[id = 9]) 
+        document.getElementById('level_11').onclick = () => game.loadLevel(levels[id = 10]) 
+        document.getElementById('level_12').onclick = () => game.loadLevel(levels[id = 11]) 
+        document.getElementById('level_13').onclick = () => game.loadLevel(levels[id = 12]) 
+        document.getElementById('level_14').onclick = () => game.loadLevel(levels[id = 13]) 
+        document.getElementById('level_15').onclick = () => game.loadLevel(levels[id = 14]) 
+        document.getElementById('level_16').onclick = () => game.loadLevel(levels[id = 15]) 
+        document.getElementById('level_17').onclick = () => game.loadLevel(levels[id = 16]) 
+        document.getElementById('level_18').onclick = () => game.loadLevel(levels[id = 17]) 
+        document.getElementById('level_19').onclick = () => game.loadLevel(levels[id = 18]) 
+        document.getElementById('level_20').onclick = () => game.loadLevel(levels[id = 19]) 
+
+
+        document.getElementById('forward').onclick = () => gamepad.forward() + gui.removeAnimation()
+        document.getElementById('backward').onclick = () => gamepad.backward() + gui.removeAnimation()
+        document.getElementById('play').onclick = () => game.loadCode() + gamepad.play() 
+        //document.getElementById('pause').onclick = () => gamepad.pause()
+
+    </script>
+
+    <!--remaining block-->
+    <script>
+        // update remaining block
+        Blockly.getMainWorkspace().addChangeListener(() => {
+            let capacity = Blockly.getMainWorkspace().remainingCapacity()
+            if (capacity != Infinity) {
+                // show capacity div
+                document.getElementById('capacity').style.display = 'block'
+                document.getElementById('capacityNumber').innerHTML = capacity
+            } else {
+                // hide capacity div
+                document.getElementById('capacity').style.display = 'none'
+            }
+        })
+    </script>
+    <!--Eventos de botones-->
+
+    <script>
+
+  
+
+    var codigo = Blockly.JavaScript.workspaceToCode(Blockly.getMainWorkspace());
+
+    //--------------------------------------------------------------------------------------------------
+
+
+    
+//------------------------------------------------------Movimiento---------------------------------------------------------
+        //Funcion que detecta el movimiento
+        function movimiento(event) { //Inicia funcion Movimiento
+             
+            if (event.type == Blockly.Events.BLOCK_MOVE) { //Ciclo If para detectar los movimientos de los bloques
+                
+                //Creacion de variable para guardar los datos del evento
+                var idMovimiento = event.blockId; //variable que Guarda el ID del boton en movimiento
+                var PadreAnterior = event.oldParentId; //Variable que Guarda el ID del boton al que se estaba anclado (si lo estaba)
+                var PadreNuevo =event.newParentId; //Variable que Guarda el ID del boton al que ahora esta anclado (si lo esta)
+                var tipo = event.type; //Variable que nos regresa la palabra move por cada movimiento 
+
+                //Creacion del arreglo para guardar los datos del Evento MOVIMIENTO
+                const move = [idMovimiento, PadreAnterior, PadreNuevo, tipo];
+                
+                //Imprime en consola los valores del arreglo por cada Movimiento
+                console.log(move[3], 'id ', move[0], "Bloque Anterior ", move[1], "Bloque Nuevo ", move[2])
+            }// Cierre del ciclo If
+
+        }// Cierre de la funcion movimiento
+        //Se manda llamnar la funcion Movimiento para que sus eventos sean escuchados por el programa en el getWorkspace.
+        Blockly.getMainWorkspace().addChangeListener(movimiento);
+  
+//----------------------------------------------cambio-----------------------------------------------------------------
+ //Function que detecta los cambios que se producen en los bloques, como direccion, posicion, comentarios, etc..
+ function cambiar(event) { // Inicio funcion cambiar
+            if (event.type == Blockly.Events.BLOCK_CHANGE) { //Ciclo if para detectar los cambios de los botones
+                
+                //Creacion de las variables para guardar los datos del evento
+                var IdCambio = event.blockId; //Variable que Guarda el Id del boton del cambio
+                var Elemento = event.element;// Variabble que Guarda el elemento de cambio
+                var Nombre = event.name;//Variable que Guarda el nombre del Cambio
+                var ValorAnterior = event.oldValue;//Variable que Guarda el valor anterior del bloque
+                var ValorNuevo = event.newValue;//Variable que Guarda el valor nuevo del cambio
+                
+                //Creación del arreglo para guardar los datos del evento CAMBIO
+                const cambio = [IdCambio, Elemento, Nombre, ValorAnterior, ValorNuevo];
+        
+                //Imprime en consola los valores del arreglo por cada Movimiento
+                console.log ('Id de Cambio: ', cambio[0], 'ELemento de cambio: ', cambio[1], 'Nombre del cambio: ', cambio[2],
+                             'Valor anterior: ', cambio[3], 'Valor Nuevo: ', cambio [4])
+
+
+            
+            }//Finaliza el ciclo If
+        }//Cierre del metodo Cambiar
+
+        //Se manda llamar la funcion Cambio para que sus eventos sean escuchados por el programa en el getWorkspace.
+        Blockly.getMainWorkspace().addChangeListener(cambiar);
+
+
+
+
+
+
+//------------------------------------------------Eliminar----------------------------------------------------------------
+        //Funcion para eliminar bloques
+        function eliminar(event) { //Inicio funcion elimninar
+            if (event.type == Blockly.Events.BLOCK_DELETE) {//Ciclo if para detectar los botones eliminados
+                
+                //Se crean las variables para Guardar los datos eliminados
+                //var IdEliminado = event.blockId; //Variable que guarda los ID eliminados
+                var XmlEliminado = event.oldXml; //Variable que guarda la informacion de los bloques Eliminados
+                //Se crea el arreglo para obtener los datos de los botones eliminados
+               //const eliminado = [IdEliminado, XmlEliminado];
+                //Se imprime los id de los botones eliminados
+               // console.log('Id del boton Eliminado: ', eliminado[0])
+                //Se imprime la información de los botones eliminados
+                //console.log('informacion de eliminacion', eliminado[1])
+                console.log('Btn_eliminado', XmlEliminado)
+                
+            }//Se cierra el ciclo if
+        }// Se cierra el metodo eliminar 
+
+        //Se manda llamar la funcion eliminar para que sus eventos sean escuchados por el programa en el getWorkspace
+        Blockly.getMainWorkspace().addChangeListener(eliminar);
+
+//---------------------------------------------Click------------------------------------------------------------------------
+        //Funcion detectadora de clicks
+        function clicks(event) { //Inicia funcion Clicks
+            if (event.isUiEvent == Blockly.Events.CLICK) { // Ciclo if para detectar los clicks de botones
+                
+                //Se crean las variables para Guardar los datos de los clicks y seleccion 
+                var IdClick = event.blockId//Se crea la varia para almacenar el Id de los botones
+                console.log('id_click: ',IdClick)
+                
+                //Se crea el arreglo para guardar los eventos
+                //const click = [Funcion, IdClick];
+                
+                //Se imprime en consola los eventos generados
+                //console.log ('Funcion: ', click[0], 'Id del boton: ', click[1])
+                
+            
+            }//Cierre del ciclo If
+        }//Cierre de la funcion Clicks
+
+        //Se manda llamar la funcion Click para que sus eventos sean escuchados por el programa en el getWorkspace
+        Blockly.getMainWorkspace().addChangeListener(clicks);
+
+//-----------------------------------------------Creación------------------------------------------------------------------
+        //Propiedades de creacion de bloques
+        function creador(event) { //Inicia la funcion creacion
+            if (event.type == Blockly.Events.BLOCK_CREATE) {// inicia ciclo if para detectar la creacion de los botones
+                
+                //Se crean las variables para guardar los datos de creación 
+                var Info = event.xml; //Se crea la variable para Guardar la información del bloque
+                
+                //Se crea el arreglo para guardar la información
+                const creacion = [Info];
+                                
+                //Se imprime la posicion central del arreglo creacion 
+                console.log ('BTN_Creado: ', creacion[0])
+                
+                const result = Date.now() - before
+            console.log('tiempo en crear Boton: ', result)
+                
+            }//Se cierra el ciclo if
+        }// Se cierra le metodo creador
+        
+
+        //Se manda llamar la funcion creacion para que sus eventos sean escuchados por el programa en el getWorkspace
+        Blockly.getMainWorkspace().addChangeListener(creador);
+
+//----------------------------------------------Prueba---------------------------------------------------------------------
+        function base(event) {
+            if(event.type == Blockly.Events.SELECTED) {
+
+                var string = event.type;
+
+                console.log('joel', bas)
+
+            }
+        }
+
+        Blockly.getMainWorkspace().addChangeListener(base);
+
+       
+    </script> 
+    <!--Detector de eventos de los botones de Ejecución-->
+    <script>
+//--------------------------Eventos del boton ejecutar------------------------------------------->
+        const before = Date.now();          
+
+        document.getElementById("play").addEventListener("mousedown", mouseDown);
+        document.getElementById("play").addEventListener("mouseup", mouseUp);
+        
+        
+        function mouseDown() {
+            var play = 'click en ejecutar';
+            console.log(play);
+            const result = Date.now() - before
+            console.log('tiempo boton ejecutar: ', result)
+        }
+        
+    
+        function mouseUp() {
+            var play ='Suelta boton ejecutar';
+            console.log(play);
+        }
+        
+        function entradaplay(){
+            var entrada = 'entrada boton ejecutar';
+            console.log(entrada);
+        }
+        
+        function salidaplay(){
+            var salida = 'Salida boton ejecutar';
+            console.log(salida)
+        }
+//---------------------------------------Eventos del boton Pausa---------------------------------->
+        //const before = Date.now();
+/*         document.getElementById("pause").addEventListener("mousedown", mouseDownPausa);
+        document.getElementById("pause").addEventListener("mouseup", mouseUpPausa);
+        
+        function mouseDownPausa (){
+            var pause = 'Click en boton pause';
+            console.log(pause);
+            const result = Date.now() - before
+            console.log('tiempo boton pausa:', result)
+        }
+        
+        function mouseUpPausa(){
+            var pause = 'Suelta el  boton pause'
+            console.log(pause);
+        }
+        
+        function entradapausa(){
+            var entradapausa = 'entrada boton pausa';
+            console.log(entradapausa)
+        }
+        
+        function salidapausa(){
+            var salidapausa = 'salida boton pausa';
+            console.log(salidapausa)
+        } */
+        
+//---------------------------------------Eventos del boton Adelante---------------------------------->
+        document.getElementById("forward").addEventListener("mousedown", mouseDownForward);
+        document.getElementById("forward").addEventListener("mouseup", mouseUpForward);
+        
+        function mouseDownForward (){
+            var adelante = 'Click en boton adelante';
+            console.log(adelante);
+            const result = Date.now() - before
+            console.log('tiempo boton adelante :', result)
+        }
+        
+        function mouseUpForward(){
+            var adelante = 'Suelta el  boton adelante'
+            console.log(adelante);
+        }
+        
+        function entradaadelante(){
+            var entradaadelante = 'entrada boton adelante';
+            console.log(entradaadelante)
+        }
+        
+        function salidaadelante(){
+            var salidaadelante = 'salida boton adelante';
+            console.log(salidaadelante)
+        }
+        
+//---------------------------------------Eventos del boton Atras---------------------------------->
+        document.getElementById("backward").addEventListener("mousedown", mouseDownBackward);
+        document.getElementById("backward").addEventListener("mouseup", mouseUpBackward);
+        
+        function mouseDownBackward (){
+            var atras = 'Click en boton atras';
+            console.log(atras);
+            const result = Date.now() - before
+            console.log('tiempo boton atras: ', result)
+        }
+        
+        function mouseUpBackward(){
+            var atras = 'Suelta el  boton atras'
+            console.log(atras);
+        }
+        
+        function entradaatras(){
+            var entradaatras = 'entrada boton atras';
+            console.log(entradaatras)
+        }
+        
+        function salidaatras(){
+            var salidaatras = 'salida boton atras';
+            console.log(salidaatras)
+        }
+        
+//----------------------------------Eventos del boton Nivel 2---------------------------------------->
+        document.getElementById("level_2").addEventListener("mousedown", mouseDownN2);
+        document.getElementById("level_2").addEventListener("mouseup", mouseUpN2);
+        
+        function mouseDownN2 (){
+            var N2 = 'Click en boton nivel 2';
+            console.log(N2);
+            const result = Date.now() - before
+            console.log('tiempo boton nivel 2: ', result)
+        }
+        
+        function mouseUpN2(){
+            var N2 = 'Suelta el  boton Nivel 2'
+            console.log(N2);
+        }
+        
+        function entradaN2(){
+            var entradaN2 = 'entrada boton Nivel 2';
+            console.log(entradaN2)
+        }
+        
+        function salidaN2(){
+            var salidaN2 = 'salida boton Nivel 2 ';
+            console.log(salidaN2)
+        }
+        
+//----------------------------------Eventos del boton Nivel 1---------------------------------------->
+        document.getElementById("level_1").addEventListener("mousedown", mouseDownN1);
+        document.getElementById("level_1").addEventListener("mouseup", mouseUpN1);
+        
+        function mouseDownN1 (){
+            var N1 = 'Click en boton nivel 1';
+            console.log(N1);
+            const result = Date.now() - before
+            console.log('tiempo boton nivel 1: ', result)
+        }
+        
+        function mouseUpN1(){
+            var N1 = 'Suelta el  boton Nivel 1'
+            console.log(N1);
+        }
+        
+        function entradaN1(){
+            var entradaN1 = 'entrada boton Nivel 1';
+            console.log(entradaN1)
+        }
+        
+        function salidaN1(){
+            var salidaN1 = 'salida boton Nivel 1 ';
+            console.log(salidaN1)
+        }
+
+        
+ //----------------------------------Eventos del boton Nivel 3---------------------------------------->
+        document.getElementById("level_3").addEventListener("mousedown", mouseDownN3);
+        document.getElementById("level_3").addEventListener("mouseup", mouseUpN3);
+        
+        function mouseDownN3 (){
+            var N3 = 'Click en boton nivel 3';
+            console.log(N3);
+            const result = Date.now() - before
+            console.log('tiempo boton nivel 3: ', result)
+        }
+        
+        function mouseUpN3(){
+            var N3 = 'Suelta el  boton Nivel 3'
+            console.log(N3);
+        }
+        
+        function entradaN3(){
+            var entradaN3 = 'entrada boton Nivel 3';
+            console.log(entradaN3)
+        }
+        
+        function salidaN3(){
+            var salidaN3 = 'salida boton Nivel 3 ';
+            console.log(salidaN3)
+        }
+        
+//----------------------------------Eventos del boton Nivel 4---------------------------------------->
+        document.getElementById("level_4").addEventListener("mousedown", mouseDownN4);
+        document.getElementById("level_4").addEventListener("mouseup", mouseUpN4);
+        
+        function mouseDownN4 (){
+            var N4 = 'Click en boton nivel 4';
+            console.log(N4);
+            const result = Date.now() - before
+            console.log('tiempo boton nivel 4: ', result)
+        }
+        
+        function mouseUpN4(){
+            var N4 = 'Suelta el  boton Nivel 4'
+            console.log(N4);
+        }
+        
+        function entradaN4(){
+            var entradaN4 = 'entrada boton Nivel 4';
+            console.log(entradaN4)
+        }
+        
+        function salidaN4(){
+            var salidaN4 = 'salida boton Nivel 4 ';
+            console.log(salidaN4)
+        }
+
+//----------------------------------Eventos del boton Nivel 5---------------------------------------->
+        document.getElementById("level_5").addEventListener("mousedown", mouseDownN5);
+        document.getElementById("level_5").addEventListener("mouseup", mouseUpN5);
+        
+        function mouseDownN5 (){
+            var N5 = 'Click en boton nivel 5';
+            console.log(N5);
+            const result = Date.now() - before
+            console.log('tiempo boton nivel 5: ', result)
+        }
+        
+        function mouseUpN5(){
+            var N5 = 'Suelta el  boton Nivel 5'
+            console.log(N5);
+        }
+        
+        function entradaN5(){
+            var entradaN5 = 'entrada boton Nivel 5';
+            console.log(entradaN5)
+        }
+        
+        function salidaN5(){
+            var salidaN5 = 'salida boton Nivel 5 ';
+            console.log(salidaN5)
+        }
+        
+//----------------------------------Eventos del boton Nivel 6---------------------------------------->
+        document.getElementById("level_6").addEventListener("mousedown", mouseDownN6);
+        document.getElementById("level_6").addEventListener("mouseup", mouseUpN6);
+        
+        function mouseDownN6 (){
+            var N6 = 'Click en boton nivel 6';
+            console.log(N6);
+            const result = Date.now() - before
+            console.log('tiempo boton nivel 6: ', result)
+        }
+        
+        function mouseUpN6(){
+            var N6 = 'Suelta el  boton Nivel 6'
+            console.log(N6);
+        }
+        
+        function entradaN6(){
+            var entradaN6 = 'entrada boton Nivel 6';
+            console.log(entradaN6)
+        }
+        
+        function salidaN6(){
+            var salidaN6 = 'salida boton Nivel 6 ';
+            console.log(salidaN6)
+        }
+
+//----------------------------------Eventos del boton Nivel 7---------------------------------------->
+        document.getElementById("level_7").addEventListener("mousedown", mouseDownN7);
+        document.getElementById("level_7").addEventListener("mouseup", mouseUpN7);
+        
+        function mouseDownN7 (){
+            var N7 = 'Click en boton nivel 7';
+            console.log(N7);
+            const result = Date.now() - before
+            console.log('tiempo boton nivel 7: ', result)
+        }
+        
+        function mouseUpN7(){
+            var N7 = 'Suelta el  boton Nivel 7'
+            console.log(N7);
+        }
+        
+        function entradaN7(){
+            var entradaN7 = 'entrada boton Nivel 7';
+            console.log(entradaN7)
+        }
+        
+        function salidaN7(){
+            var salidaN7 = 'salida boton Nivel 7 ';
+            console.log(salidaN7)
+        }
+        
+//----------------------------------Eventos del boton Nivel 8---------------------------------------->
+        document.getElementById("level_8").addEventListener("mousedown", mouseDownN8);
+        document.getElementById("level_8").addEventListener("mouseup", mouseUpN8);
+        
+        function mouseDownN8 (){
+            var N8 = 'Click en boton nivel 8';
+            console.log(N8);
+            const result = Date.now() - before
+            console.log('tiempo boton nivel 8: ', result)
+        }
+        
+        function mouseUpN8(){
+            var N8 = 'Suelta el  boton Nivel 8'
+            console.log(N8);
+        }
+        
+        function entradaN8(){
+            var entradaN8 = 'entrada boton Nivel 8';
+            console.log(entradaN8)
+        }
+        
+        function salidaN8(){
+            var salidaN8 = 'salida boton Nivel 8 ';
+            console.log(salidaN8)
+        }
+        
+//----------------------------------Eventos del boton Nivel 9---------------------------------------->
+        document.getElementById("level_9").addEventListener("mousedown", mouseDownN9);
+        document.getElementById("level_9").addEventListener("mouseup", mouseUpN9);
+        
+        function mouseDownN9 (){
+            var N9 = 'Click en boton nivel 9';
+            console.log(N9);
+            const result = Date.now() - before
+            console.log('tiempo boton nivel 9: ', result)
+        }
+        
+        function mouseUpN9(){
+            var N9 = 'Suelta el  boton Nivel 9'
+            console.log(N9);
+        }
+        
+        function entradaN9(){
+            var entradaN9 = 'entrada boton Nivel 9';
+            console.log(entradaN9)
+        }
+        
+        function salidaN9(){
+            var salidaN9 = 'salida boton Nivel 9 ';
+            console.log(salidaN9)
+        }
+        
+//----------------------------------Eventos del boton Nivel 10---------------------------------------->
+        document.getElementById("level_10").addEventListener("mousedown", mouseDownN10);
+        document.getElementById("level_10").addEventListener("mouseup", mouseUpN10);
+        
+        function mouseDownN10 (){
+            var N10 = 'Click en boton nivel 10';
+            console.log(N10);
+            const result = Date.now() - before
+            console.log('tiempo boton nivel 10: ', result)
+        }
+        
+        function mouseUpN10(){
+            var N10 = 'Suelta el  boton Nivel 10'
+            console.log(N10);
+        }
+        
+        function entradaN10(){
+            var entradaN10 = 'entrada boton Nivel 10';
+            console.log(entradaN10)
+        }
+        
+        function salidaN10(){
+            var salidaN10 = 'salida boton Nivel 10 ';
+            console.log(salidaN10)
+        }
+        
+//----------------------------------Eventos del boton Nivel 11---------------------------------------->
+        document.getElementById("level_11").addEventListener("mousedown", mouseDownN11);
+        document.getElementById("level_11").addEventListener("mouseup", mouseUpN11);
+        
+        function mouseDownN11 (){
+            var N11 = 'Click en boton nivel 11';
+            console.log(N11);
+            const result = Date.now() - before
+            console.log('tiempo boton nivel 11: ', result)
+        }
+        
+        function mouseUpN11(){
+            var N11 = 'Suelta el  boton Nivel 11'
+            console.log(N11);
+        }
+        
+        function entradaN11(){
+            var entradaN11 = 'entrada boton Nivel 11';
+            console.log(entradaN11)
+        }
+        
+        function salidaN11(){
+            var salidaN11 = 'salida boton Nivel 11 ';
+            console.log(salidaN11)
+        }
+        
+//----------------------------------Eventos del boton Nivel 12---------------------------------------->
+        document.getElementById("level_12").addEventListener("mousedown", mouseDownN12);
+        document.getElementById("level_12").addEventListener("mouseup", mouseUpN12);
+        
+        function mouseDownN12 (){
+            var N12 = 'Click en boton nivel 12';
+            console.log(N12);
+            const result = Date.now() - before
+            console.log('tiempo boton nivel 12: ', result)
+        }
+        
+        function mouseUpN12(){
+            var N12 = 'Suelta el  boton Nivel 12'
+            console.log(N12);
+        }
+        
+        function entradaN12(){
+            var entradaN12 = 'entrada boton Nivel 12';
+            console.log(entradaN12)
+        }
+        
+        function salidaN12(){
+            var salidaN12 = 'salida boton Nivel 12 ';
+            console.log(salidaN12)
+        }
+        
+//----------------------------------Eventos del boton Nivel 13---------------------------------------->
+        document.getElementById("level_13").addEventListener("mousedown", mouseDownN13);
+        document.getElementById("level_13").addEventListener("mouseup", mouseUpN13);
+        
+        function mouseDownN13 (){
+            var N13 = 'Click en boton nivel 13';
+            console.log(N13);
+            const result = Date.now() - before
+            console.log('tiempo boton nivel 13: ', result)
+        }
+        
+        function mouseUpN13(){
+            var N13 = 'Suelta el  boton Nivel 13'
+            console.log(N13);
+        }
+        
+        function entradaN13(){
+            var entradaN13 = 'entrada boton Nivel 13';
+            console.log(entradaN13)
+        }
+        
+        function salidaN13(){
+            var salidaN13 = 'salida boton Nivel 13 ';
+            console.log(salidaN13)
+        }
+        
+//----------------------------------Eventos del boton Nivel 4---------------------------------------->
+        document.getElementById("level_14").addEventListener("mousedown", mouseDownN14);
+        document.getElementById("level_14").addEventListener("mouseup", mouseUpN14);
+        
+        function mouseDownN14 (){
+            var N14 = 'Click en boton nivel 14';
+            console.log(N14);
+            const result = Date.now() - before
+            console.log('tiempo boton nivel 14: ', result)
+        }
+        
+        function mouseUpN14(){
+            var N14 = 'Suelta el  boton Nivel 14'
+            console.log(N14);
+        }
+        
+        function entradaN14(){
+            var entradaN14 = 'entrada boton Nivel 14';
+            console.log(entradaN14)
+        }
+        
+        function salidaN14(){
+            var salidaN14 = 'salida boton Nivel 14 ';
+            console.log(salidaN14)
+        }
+        
+//----------------------------------Eventos del boton Nivel 15---------------------------------------->
+        document.getElementById("level_15").addEventListener("mousedown", mouseDownN15);
+        document.getElementById("level_15").addEventListener("mouseup", mouseUpN15);
+        
+        function mouseDownN15 (){
+            var N15 = 'Click en boton nivel 15';
+            console.log(N15);
+            const result = Date.now() - before
+            console.log('tiempo boton nivel 15: ', result)
+        }
+        
+        function mouseUpN15(){
+            var N15 = 'Suelta el  boton Nivel 15'
+            console.log(N15);
+        }
+        
+        function entradaN15(){
+            var entradaN15 = 'entrada boton Nivel 15';
+            console.log(entradaN15)
+        }
+        
+        function salidaN15(){
+            var salidaN15 = 'salida boton Nivel 15 ';
+            console.log(salidaN15)
+        }
+        
+        //----------------------------------Eventos del boton Nivel 16---------------------------------------->
+        document.getElementById("level_16").addEventListener("mousedown", mouseDownN16);
+        document.getElementById("level_16").addEventListener("mouseup", mouseUpN16);
+        
+        function mouseDownN16 (){
+            var N16 = 'Click en boton nivel 16';
+            console.log(N16);
+            const result = Date.now() - before
+            console.log('tiempo boton nivel 16: ', result)
+        }
+        
+        function mouseUpN16(){
+            var N16 = 'Suelta el  boton Nivel 16'
+            console.log(N16);
+        }
+        
+        function entradaN16(){
+            var entradaN16 = 'entrada boton Nivel 16';
+            console.log(entradaN16)
+        }
+        
+        function salidaN16(){
+            var salidaN16 = 'salida boton Nivel 16 ';
+            console.log(salidaN16)
+        }
+        
+//----------------------------------Eventos del boton Nivel 17---------------------------------------->
+        document.getElementById("level_17").addEventListener("mousedown", mouseDownN17);
+        document.getElementById("level_17").addEventListener("mouseup", mouseUpN17);
+        
+        function mouseDownN17 (){
+            var N17 = 'Click en boton nivel 17';
+            console.log(N17);
+            const result = Date.now() - before
+            console.log('tiempo boton nivel 17: ', result)
+        }
+        
+        function mouseUpN17(){
+            var N17 = 'Suelta el  boton Nivel 17'
+            console.log(N17);
+        }
+        
+        function entradaN17(){
+            var entradaN17 = 'entrada boton Nivel 17';
+            console.log(entradaN17)
+        }
+        
+        function salidaN17(){
+            var salidaN17 = 'salida boton Nivel 17 ';
+            console.log(salidaN17)
+        }
+        
+//----------------------------------Eventos del boton Nivel 18---------------------------------------->
+        document.getElementById("level_18").addEventListener("mousedown", mouseDownN18);
+        document.getElementById("level_18").addEventListener("mouseup", mouseUpN18);
+        
+        function mouseDownN18 (){
+            var N18 = 'Click en boton nivel 18';
+            console.log(N18);
+            const result = Date.now() - before
+            console.log('tiempo boton nivel 18: ', result)
+        }
+        
+        function mouseUpN18(){
+            var N18 = 'Suelta el  boton Nivel 18'
+            console.log(N18);
+        }
+        
+        function entradaN18(){
+            var entradaN18 = 'entrada boton Nivel 18';
+            console.log(entradaN18)
+        }
+        
+        function salidaN18(){
+            var salidaN18 = 'salida boton Nivel 18 ';
+            console.log(salidaN18)
+        }
+        
+        //----------------------------------Eventos del boton Nivel 19---------------------------------------->
+        document.getElementById("level_19").addEventListener("mousedown", mouseDownN19);
+        document.getElementById("level_19").addEventListener("mouseup", mouseUpN19);
+        
+        function mouseDownN19 (){
+            var N19 = 'Click en boton nivel 19';
+            console.log(N19);
+            const result = Date.now() - before
+            console.log('tiempo boton nivel 19: ', result)
+        }
+        
+        function mouseUpN19(){
+            var N19 = 'Suelta el  boton Nivel 19'
+            console.log(N19);
+        }
+        
+        function entradaN19(){
+            var entradaN19 = 'entrada boton Nivel 19';
+            console.log(entradaN19)
+        }
+        
+        function salidaN19(){
+            var salidaN19 = 'salida boton Nivel 19 ';
+            console.log(salidaN19)
+        }
+        
+//----------------------------------Eventos del boton Nivel 10---------------------------------------->
+        document.getElementById("level_20").addEventListener("mousedown", mouseDownN20);
+        document.getElementById("level_20").addEventListener("mouseup", mouseUpN20);
+        
+        function mouseDownN20 (){
+            var N20 = 'Click en boton nivel 20';
+            console.log(N20);
+            const result = Date.now() - before
+            console.log('tiempo boton nivel 20: ', result)
+        }
+        
+        function mouseUpN20(){
+            var N20 = 'Suelta el  boton Nivel 20'
+            console.log(N20);
+        }
+        
+        function entradaN20(){
+            var entradaN20 = 'entrada boton Nivel 20';
+            console.log(entradaN20)
+        }
+        
+        function salidaN20(){
+            var salidaN20 = 'salida boton Nivel 20 ';
+            console.log(salidaN20)
+        }
+        
+    </script>
+
+
+    <!--navigation-->
+    <script>
+        // get the url
+        const getUrl = (start, categories) => {
+            let url = []
+
+            if (start) url.push('start=true')
+            if (categories) url.push('categories=true')
+            url.push('id=' + (id + 1))
+
+            return 'index.html?' + url.join('&')
+        }
+        // add handlers
+        document.getElementById('start_check').onclick =
+            (event) => window.location.href = getUrl(event.target.checked, categories)
+
+        document.getElementById('categories_check').onclick =
+            (event) => window.location.href = getUrl(start, event.target.checked)
+
+        // show capacity div
+        if (id == 2) document.getElementById('capacity').style.display = 'block'
+
+    </script>
+
+<!------------------------------------------------Preguntas Modales--------------------------------------------------------->
+<!------------------------------------------------Pregunta 1---------------------------------------------------------------->
+
+ <dialog id="modal">
+    <h2>¡¡¡Felcidiades haz Completado el Nivel 1 !!!!</h2>
+    <br>
+
+    <h3>Te gusto el nivel 1</h3>
+    <button class="button" id="GNada1">Nada</button>
+    <button class="button" id="GPoco1">Poco</button>
+    <button class="button" id="GRegular1">Regular</button>
+    <button class="button" id="GBastante1">Bastante</button>
+    <button class="button" id="GMucho1">Mucho</button>
+    <br>
+
+    <h3>Que tan dificil te parecio el nivel 1:</h3> 
+    <button class="button"  id="DNada1" onclick="window.modal.onclick = () => game.loadLevel(levels[id = 3]);">Nada</button>
+
+    <button class="button" id="DPoco1" onclick="window.modal.onclick = () => game.loadLevel(levels[id = 3]);">Poco</button>
+
+    <button class="button" id="DRegular1" onclick="window.modal.onclick = () => game.loadLevel(levels[id = 1]);">Regular</button>
+
+    <button class="button" id="DBastante1" onclick="window.modal.onclick = () => game.loadLevel(levels[id = 1]);">Bastante</button>
+
+    <button class="button" id="DMucho1" onclick="window.modal.onclick = () => game.loadLevel(levels[id = 1]);">Mucho</button>
+    <br>
+    <br>
+
+    <button class="button" onclick="window.modal.close();">Cerrar</button>
+
+ </dialog>
+    <script>
+
+//----------------------------------------Eventos preguntas Dificultad------------------------------------------------------>
+
+//----------------------------------Eventos de la pregunta 1 Dif Nada-------------------------------------------------------->
+        document.getElementById("DNada1").addEventListener("mousedown", mouseDownD1);
+        document.getElementById("DNada1").addEventListener("mouseup", mouseUpD1);
+        
+        function mouseDownD1 (){
+            var DD1 = 'Click en boton dificultad Nada Nvl 1';
+            console.log(DD1);
+            const result = Date.now() - before
+            console.log('tiempo boton dificultad nada Nvl 1: ', result)
+        }
+        
+        function mouseUpD1(){
+            var UD1 = 'Suelta el  boton dificultad Nada Nvl 1'
+            console.log(UD1);
+        }
+        
+//----------------------------------Eventos de la pregunta 1 Dif Poco--------------------------------------------------------->
+document.getElementById("DPoco1").addEventListener("mousedown", mouseDownP1);
+document.getElementById("DPoco1").addEventListener("mouseup", mouseUpP1);
+
+function mouseDownP1 (){
+    var DP1 = 'Click en boton dificultad Poco Nvl 1';
+    console.log(DP1);
+    const result = Date.now() - before
+    console.log('tiempo boton dificultad poco Nvl 1: ', result)
+}
+
+function mouseUpP1(){
+    var UD1 = 'Suelta el  boton dificultad Poco Nvl 1'
+    console.log(UD1);
+}
+
+//----------------------------------Eventos de la pregunta Dif 1 Regular--------------------------------------------------------->
+document.getElementById("DRegular1").addEventListener("mousedown", mouseDownR1);
+document.getElementById("DRegular1").addEventListener("mouseup", mouseUpR1);
+
+function mouseDownR1 (){
+    var DR1 = 'Click en boton dificultad Regular Nvl 1';
+    console.log(DR1);
+    const result = Date.now() - before
+    console.log('tiempo boton dificultad Regular Nvl 1: ', result)
+}
+
+function mouseUpR1(){
+    var UR1 = 'Suelta el  boton dificultad Regular Nvl 1'
+    console.log(UR1);
+}
+
+//----------------------------------Eventos de la pregunta Dif 1 Bastante--------------------------------------------------------->
+document.getElementById("DBastante1").addEventListener("mousedown", mouseDownB1);
+document.getElementById("DBastante1").addEventListener("mouseup", mouseUpB1);
+
+function mouseDownB1 (){
+    var DB1 = 'Click en boton dificultad Bastante Nvl 1';
+    console.log(DB1);
+    const result = Date.now() - before
+    console.log('tiempo boton dificultad Bastante Nvl 1: ', result)
+}
+
+function mouseUpB1(){
+    var UB1 = 'Suelta el  boton dificultad Bastante Nvl 1'
+    console.log(UB1);
+}
+
+//----------------------------------Eventos de la pregunta Dif  1 Mucho--------------------------------------------------------->
+document.getElementById("DMucho1").addEventListener("mousedown", mouseDownM1);
+document.getElementById("DMucho1").addEventListener("mouseup", mouseUpM1);
+
+function mouseDownM1 (){
+    var DM1 = 'Click en boton dificultad Mucho Nvl 1';
+    console.log(DM1);
+    const result = Date.now() - before
+    console.log('tiempo boton dificultad Mucho Nvl 1: ', result)
+}
+
+function mouseUpM1(){
+    var UM1 = 'Suelta el  boton dificultad Mucho Nvl 1'
+    console.log(UM1);
+}
+
+//-------------------------------------------Eventos preguntas Gustos------------------------------------------------------>
+
+//----------------------------------Eventos de la pregunta 1 Gus Nada-------------------------------------------------------->
+document.getElementById("GNada1").addEventListener("mousedown", mouseDownG1);
+        document.getElementById("DNada1").addEventListener("mouseup", mouseUpG1);
+        
+        function mouseDownG1 (){
+            var DGN1 = 'Click en boton Gustó Nada Nvl 1';
+            console.log(DGN1);
+            const result = Date.now() - before
+            console.log('tiempo boton Gustó nada Nvl 1: ', result)
+        }
+        
+        function mouseUpG1(){
+            var UGN1 = 'Suelta el  boton dificultad Nada Nvl 1'
+            console.log(UGN1);
+        }
+        
+//----------------------------------Eventos de la pregunta 1 gus Poco--------------------------------------------------------->
+document.getElementById("GPoco1").addEventListener("mousedown", mouseDownGP1);
+document.getElementById("GPoco1").addEventListener("mouseup", mouseUpGP1);
+
+function mouseDownGP1 (){
+    var DGP1 = 'Click en boton Gustó Poco Nvl 1';
+    console.log(DGP1);
+    const result = Date.now() - before
+    console.log('tiempo boton Gustó poco Nvl 1: ', result)
+}
+
+function mouseUpGP1(){
+    var UGP1 = 'Suelta el  boton Gustó Poco Nvl 1'
+    console.log(UGP1);
+}
+
+//----------------------------------Eventos de la pregunta Gus 1 Regular--------------------------------------------------------->
+document.getElementById("GRegular1").addEventListener("mousedown", mouseDownGR1);
+document.getElementById("GRegular1").addEventListener("mouseup", mouseUpGR1);
+
+function mouseDownGR1 (){
+    var DGR1 = 'Click en boton Gustó Regular Nvl 1';
+    console.log(DGR1);
+    const result = Date.now() - before
+    console.log('tiempo boton Gustó Regular Nvl 1: ', result)
+}
+
+function mouseUpGR1(){
+    var UGR1 = 'Suelta el  boton Gustó Regular Nvl 1'
+    console.log(UGR1);
+}
+
+//----------------------------------Eventos de la pregunta gus 1 Bastante--------------------------------------------------------->
+document.getElementById("GBastante1").addEventListener("mousedown", mouseDownGB1);
+document.getElementById("GBastante1").addEventListener("mouseup", mouseUpGB1);
+
+function mouseDownGB1 (){
+    var DGB1 = 'Click en boton Gustó Bastante Nvl 1';
+    console.log(DGB1);
+    const result = Date.now() - before
+    console.log('tiempo boton Gustó Bastante Nvl 1: ', result)
+}
+
+function mouseUpGB1(){
+    var UGB1 = 'Suelta el  boton Gustó Bastante Nvl 1'
+    console.log(UGB1);
+}
+
+//----------------------------------Eventos de la pregunta gus 1 Mucho--------------------------------------------------------->
+document.getElementById("GMucho1").addEventListener("mousedown", mouseDownGM1);
+document.getElementById("GMucho1").addEventListener("mouseup", mouseUpGM1);
+
+function mouseDownGM1 (){
+    var DGM1 = 'Click en boton Gustó Mucho Nvl 1';
+    console.log(DGM1);
+    const result = Date.now() - before
+    console.log('tiempo boton Gustó Mucho Nvl 1: ', result)
+}
+
+function mouseUpGM1(){
+    var UGM1 = 'Suelta el  boton Gustó Mucho Nvl 1'
+    console.log(UGM1);
+}
+
+</script>
+
+ <!------------------------------------------------Pregunta 2---------------------------------------------------------------->
+
+ <dialog id="modal1">
+    <h2>¡¡¡Felcidiades haz completado el Nive 2!!!</h2>
+
+    <h3>Te gusto el nivel 2</h3>
+    <button class="button" id="GNada2">Nada</button>
+    <button class="button" id="GPoco2">Poco</button>
+    <button class="button" id="GRegular2">Regular</button>
+    <button class="button" id="GBastante2">Bastante</button>
+    <button class="button" id="GMucho2">Mucho</button>
+    <br>
+
+    <h3>Que tan dificil te parecio el nivel 2:</h3> 
+    <button class="button" id="DNada2" onclick="window.modal1.onclick = () => game.loadLevel(levels[id = 3]);">Nada</button>
+    <button class="button" id="DPoco2" onclick="window.modal1.onclick = () => game.loadLevel(levels[id = 3]);">Poco</button>
+    <button class="button" id="DRegular2" onclick="window.modal1.onclick = () => game.loadLevel(levels[id = 2]);">Regular</button>
+    <button class="button" id="DBastante2" onclick="window.modal1.onclick = () => game.loadLevel(levels[id = 2]);">Bastante</button>
+    <button class="button" id="DMucho2" onclick="window.modal1.onclick = () => game.loadLevel(levels[id = 2]);">Mucho</button>
+    <br>
+    <br>
+
+    <button class="button" onclick="window.modal1.close();">Cerrar</button>
+
+
+ </dialog>
+
+ <script>
+
+//----------------------------------------Eventos preguntas Dificultad------------------------------------------------------>
+    
+//----------------------------------Eventos de la pregunta 2 Dif Nada-------------------------------------------------------->
+            document.getElementById("DNada2").addEventListener("mousedown", mouseDownD2);
+            document.getElementById("DNada2").addEventListener("mouseup", mouseUpD2);
+            
+            function mouseDownD2 (){
+                var DD2 = 'Click en boton dificultad Nada Nvl 2';
+                console.log(DD2);
+                const result = Date.now() - before
+                console.log('tiempo boton dificultad nada Nvl 2: ', result)
+            }
+            
+            function mouseUpD2(){
+                var UD2 = 'Suelta el  boton dificultad Nada Nvl 2'
+                console.log(UD2);
+            }
+            
+//----------------------------------Eventos de la pregunta 2 Dif Poco--------------------------------------------------------->
+    document.getElementById("DPoco2").addEventListener("mousedown", mouseDownP2);
+    document.getElementById("DPoco2").addEventListener("mouseup", mouseUpP2);
+    
+    function mouseDownP2 (){
+        var DP2 = 'Click en boton dificultad Poco Nvl 2';
+        console.log(DP2);
+        const result = Date.now() - before
+        console.log('tiempo boton dificultad poco Nvl 2: ', result)
+    }
+    
+    function mouseUpP2(){
+        var UD2 = 'Suelta el  boton dificultad Poco Nvl 2'
+        console.log(UD2);
+    }
+    
+    //----------------------------------Eventos de la pregunta Dif 2 Regular--------------------------------------------------------->
+    document.getElementById("DRegular2").addEventListener("mousedown", mouseDownR2);
+    document.getElementById("DRegular2").addEventListener("mouseup", mouseUpR2);
+    
+    function mouseDownR2 (){
+        var DR2 = 'Click en boton dificultad Regular Nvl 2';
+        console.log(DR2);
+        const result = Date.now() - before
+        console.log('tiempo boton dificultad Regular Nvl 2: ', result)
+    }
+    
+    function mouseUpR2(){
+        var UR2 = 'Suelta el  boton dificultad Regular Nvl 2'
+        console.log(UR2);
+    }
+    
+    //----------------------------------Eventos de la pregunta Dif 2 Bastante--------------------------------------------------------->
+    document.getElementById("DBastante2").addEventListener("mousedown", mouseDownB2);
+    document.getElementById("DBastante2").addEventListener("mouseup", mouseUpB2);
+    
+    function mouseDownB2 (){
+        var DB2 = 'Click en boton dificultad Bastante Nvl 2';
+        console.log(DB2);
+        const result = Date.now() - before
+        console.log('tiempo boton dificultad Bastante Nvl 2: ', result)
+    }
+    
+    function mouseUpB2(){
+        var UB2 = 'Suelta el  boton dificultad Bastante Nvl 2'
+        console.log(UB2);
+    }
+    
+    //----------------------------------Eventos de la pregunta Dif  2 Mucho--------------------------------------------------------->
+    document.getElementById("DMucho2").addEventListener("mousedown", mouseDownM2);
+    document.getElementById("DMucho2").addEventListener("mouseup", mouseUpM2);
+    
+    function mouseDownM2 (){
+        var DM2 = 'Click en boton dificultad Mucho Nvl 2';
+        console.log(DM2);
+        const result = Date.now() - before
+        console.log('tiempo boton dificultad Mucho Nvl 2: ', result)
+    }
+    
+    function mouseUpM2(){
+        var UM2 = 'Suelta el  boton dificultad Mucho Nvl 2'
+        console.log(UM2);
+    }
+    
+    //-------------------------------------------Eventos preguntas Gustos------------------------------------------------------>
+    
+    //----------------------------------Eventos de la pregunta 2 Gus Nada-------------------------------------------------------->
+    document.getElementById("GNada2").addEventListener("mousedown", mouseDownG2);
+    document.getElementById("DNada2").addEventListener("mouseup", mouseUpG2);
+            
+            function mouseDownG2 (){
+                var DGN2 = 'Click en boton Gustó Nada Nvl 2';
+                console.log(DGN2);
+                const result = Date.now() - before
+                console.log('tiempo boton Gustó nada Nvl 2: ', result)
+            }
+            
+            function mouseUpG2(){
+                var UGN2 = 'Suelta el  boton dificultad Nada Nvl 2'
+                console.log(UGN2);
+            }
+            
+    //----------------------------------Eventos de la pregunta 2 gus Poco--------------------------------------------------------->
+    document.getElementById("GPoco2").addEventListener("mousedown", mouseDownGP2);
+    document.getElementById("GPoco2").addEventListener("mouseup", mouseUpGP2);
+    
+    function mouseDownGP2 (){
+        var DGP2 = 'Click en boton Gustó Poco Nvl 2';
+        console.log(DGP2);
+        const result = Date.now() - before
+        console.log('tiempo boton Gustó poco Nvl 2: ', result)
+    }
+    
+    function mouseUpGP2(){
+        var UGP2 = 'Suelta el  boton Gustó Poco Nvl 2'
+        console.log(UGP2);
+    }
+    
+    //----------------------------------Eventos de la pregunta Gus 2 Regular--------------------------------------------------------->
+    document.getElementById("GRegular2").addEventListener("mousedown", mouseDownGR2);
+    document.getElementById("GRegular2").addEventListener("mouseup", mouseUpGR2);
+    
+    function mouseDownGR2 (){
+        var DGR2 = 'Click en boton Gustó Regular Nvl 2';
+        console.log(DGR2);
+        const result = Date.now() - before
+        console.log('tiempo boton Gustó Regular Nvl 2: ', result)
+    }
+    
+    function mouseUpGR2(){
+        var UGR2 = 'Suelta el  boton Gustó Regular Nvl 2'
+        console.log(UGR2);
+    }
+    
+    //----------------------------------Eventos de la pregunta gus 2 Bastante--------------------------------------------------------->
+    document.getElementById("GBastante2").addEventListener("mousedown", mouseDownGB2);
+    document.getElementById("GBastante2").addEventListener("mouseup", mouseUpGB2);
+    
+    function mouseDownGB2 (){
+        var DGB2 = 'Click en boton Gustó Bastante Nvl 2';
+        console.log(DGB2);
+        const result = Date.now() - before
+        console.log('tiempo boton Gustó Bastante Nvl 2: ', result)
+    }
+    
+    function mouseUpGB2(){
+        var UGB2 = 'Suelta el  boton Gustó Bastante Nvl 2'
+        console.log(UGB2);
+    }
+    
+    //----------------------------------Eventos de la pregunta gus 2 Mucho--------------------------------------------------------->
+    document.getElementById("GMucho2").addEventListener("mousedown", mouseDownGM2);
+    document.getElementById("GMucho2").addEventListener("mouseup", mouseUpGM2);
+    
+    function mouseDownGM2 (){
+        var DGM2 = 'Click en boton Gustó Mucho Nvl 2';
+        console.log(DGM2);
+        const result = Date.now() - before
+        console.log('tiempo boton Gustó Mucho Nvl 2: ', result)
+    }
+    
+    function mouseUpGM2(){
+        var UGM2 = 'Suelta el  boton Gustó Mucho Nvl 2'
+        console.log(UGM2);
+    }
+    
+    </script>
+
+  <!------------------------------------------------Pregunta 3-------------------------------------------------------------->
+
+  <dialog id="modal2">
+    <h2>¡¡¡Felcidiades haz completado el Nivel 3 !!!</h2>
+
+    <h3>Te gusto el nivel 3</h3>
+    <button class="button" id="GNada3">Nada</button>
+    <button class="button" id="GPoco3">Poco</button>
+    <button class="button" id="GRegular3">Regular</button>
+    <button class="button"id="GBastante3">Bastante</button>
+    <button class="button" id="GMucho3" >Mucho</button>
+    <br>
+
+    <h3>Que tan dificil te parecio el nivel 3:</h3> 
+    <button class="button" id="DNada3" onclick="window.modal2.onclick = () => game.loadLevel(levels[id = 3]);">Nada</button>
+    <button class="button" id="DPoco3" onclick="window.modal2.onclick = () => game.loadLevel(levels[id = 3]);">Poco</button>
+    <button class="button" id="DRegular3" onclick="window.modal2.onclick = () => game.loadLevel(levels[id = 3]);">Regular</button>
+    <button class="button" id="DBastante3" onclick="window.modal2.onclick = () => game.loadLevel(levels[id = 3]);">Bastante</button>
+    <button class="button" id="DMucho3" onclick="window.modal2.onclick = () => game.loadLevel(levels[id = 3]);">Mucho</button>
+    <br>
+    <br>
+
+    <button class="button" onclick="window.modal2.close();">Cerrar</button>
+
+ </dialog>
+
+ <script>
+
+//----------------------------------------Eventos preguntas Dificultad------------------------------------------------------>
+    
+//----------------------------------Eventos de la pregunta 3 Dif Nada-------------------------------------------------------->
+            document.getElementById("DNada3").addEventListener("mousedown", mouseDownD3);
+            document.getElementById("DNada3").addEventListener("mouseup", mouseUpD3);
+            
+            function mouseDownD3 (){
+                var DD3 = 'Click en boton dificultad Nada Nvl 3';
+                console.log(DD3);
+                const result = Date.now() - before
+                console.log('tiempo boton dificultad nada Nvl 3: ', result)
+            }
+            
+            function mouseUpD3(){
+                var UD3 = 'Suelta el  boton dificultad Nada Nvl 3'
+                console.log(UD3);
+            }
+            
+//----------------------------------Eventos de la pregunta 3 Dif Poco--------------------------------------------------------->
+    document.getElementById("DPoco3").addEventListener("mousedown", mouseDownP3);
+    document.getElementById("DPoco3").addEventListener("mouseup", mouseUpP3);
+    
+    function mouseDownP3 (){
+        var DP3 = 'Click en boton dificultad Poco Nvl 3';
+        console.log(DP3);
+        const result = Date.now() - before
+        console.log('tiempo boton dificultad poco Nvl 3: ', result)
+    }
+    
+    function mouseUpP3(){
+        var UD3 = 'Suelta el  boton dificultad Poco Nvl 3'
+        console.log(UD3);
+    }
+    
+//----------------------------------Eventos de la pregunta Dif 3 Regular--------------------------------------------------------->
+    document.getElementById("DRegular3").addEventListener("mousedown", mouseDownR3);
+    document.getElementById("DRegular3").addEventListener("mouseup", mouseUpR3);
+    
+    function mouseDownR3 (){
+        var DR3 = 'Click en boton dificultad Regular Nvl 3';
+        console.log(DR3);
+        const result = Date.now() - before
+        console.log('tiempo boton dificultad Regular Nvl 3: ', result)
+    }
+    
+    function mouseUpR3(){
+        var UR3 = 'Suelta el  boton dificultad Regular Nvl 3'
+        console.log(UR3);
+    }
+    
+//----------------------------------Eventos de la pregunta Dif 3 Bastante--------------------------------------------------------->
+    document.getElementById("DBastante3").addEventListener("mousedown", mouseDownB3);
+    document.getElementById("DBastante3").addEventListener("mouseup", mouseUpB3);
+    
+    function mouseDownB3 (){
+        var DB3 = 'Click en boton dificultad Bastante Nvl 3';
+        console.log(DB3);
+        const result = Date.now() - before
+        console.log('tiempo boton dificultad Bastante Nvl 3: ', result)
+    }
+    
+    function mouseUpB3(){
+        var UB3 = 'Suelta el  boton dificultad Bastante Nvl 3'
+        console.log(UB3);
+    }
+    
+//----------------------------------Eventos de la pregunta Dif 3 Mucho--------------------------------------------------------->
+    document.getElementById("DMucho3").addEventListener("mousedown", mouseDownM3);
+    document.getElementById("DMucho3").addEventListener("mouseup", mouseUpM3);
+    
+    function mouseDownM3 (){
+        var DM3 = 'Click en boton dificultad Mucho Nvl 3';
+        console.log(DM3);
+        const result = Date.now() - before
+        console.log('tiempo boton dificultad Mucho Nvl 3: ', result)
+    }
+    
+    function mouseUpM3(){
+        var UM3 = 'Suelta el  boton dificultad Mucho Nvl 3'
+        console.log(UM3);
+    }
+    
+//-------------------------------------------Eventos preguntas Gustos------------------------------------------------------>
+    
+//----------------------------------Eventos de la pregunta 3 Gus Nada-------------------------------------------------------->
+    document.getElementById("GNada3").addEventListener("mousedown", mouseDownG3);
+            document.getElementById("DNada3").addEventListener("mouseup", mouseUpG3);
+            
+            function mouseDownG3 (){
+                var DGN3 = 'Click en boton Gustó Nada Nvl 3';
+                console.log(DGN3);
+                const result = Date.now() - before
+                console.log('tiempo boton Gustó nada Nvl 3: ', result)
+            }
+            
+            function mouseUpG3(){
+                var UGN3 = 'Suelta el  boton dificultad Nada Nvl '
+                console.log(UGN3);
+            }
+            
+//----------------------------------Eventos de la pregunta 3 gus Poco--------------------------------------------------------->
+    document.getElementById("GPoco3").addEventListener("mousedown", mouseDownGP3);
+    document.getElementById("GPoco3").addEventListener("mouseup", mouseUpGP3);
+    
+    function mouseDownGP3 (){
+        var DGP3 = 'Click en boton Gustó Poco Nvl 3';
+        console.log(DGP3);
+        const result = Date.now() - before
+        console.log('tiempo boton Gustó poco Nvl 3: ', result)
+    }
+    
+    function mouseUpGP3(){
+        var UGP3 = 'Suelta el  boton Gustó Poco Nvl 3'
+        console.log(UGP3);
+    }
+    
+//----------------------------------Eventos de la pregunta Gus 3 Regular--------------------------------------------------------->
+    document.getElementById("GRegular3").addEventListener("mousedown", mouseDownGR3);
+    document.getElementById("GRegular3").addEventListener("mouseup", mouseUpGR3);
+    
+    function mouseDownGR3 (){
+        var DGR3 = 'Click en boton Gustó Regular Nvl 3';
+        console.log(DGR3);
+        const result = Date.now() - before
+        console.log('tiempo boton Gustó Regular Nvl 3: ', result)
+    }
+    
+    function mouseUpGR3(){
+        var UGR3 = 'Suelta el  boton Gustó Regular Nvl 3'
+        console.log(UGR3);
+    }
+    
+//----------------------------------Eventos de la pregunta gus 3 Bastante--------------------------------------------------------->
+    document.getElementById("GBastante3").addEventListener("mousedown", mouseDownGB3);
+    document.getElementById("GBastante3").addEventListener("mouseup", mouseUpGB3);
+    
+    function mouseDownGB3 (){
+        var DGB3 = 'Click en boton Gustó Bastante Nvl 3';
+        console.log(DGB3);
+        const result = Date.now() - before
+        console.log('tiempo boton Gustó Bastante Nvl 3: ', result)
+    }
+    
+    function mouseUpGB3(){
+        var UGB3 = 'Suelta el  boton Gustó Bastante Nvl 3'
+        console.log(UGB3);
+    }
+    
+//----------------------------------Eventos de la pregunta gus 3 Mucho--------------------------------------------------------->
+    document.getElementById("GMucho3").addEventListener("mousedown", mouseDownGM3);
+    document.getElementById("GMucho3").addEventListener("mouseup", mouseUpGM3);
+    
+    function mouseDownGM3 (){
+        var DGM3 = 'Click en boton Gustó Mucho Nvl 3';
+        console.log(DGM3);
+        const result = Date.now() - before
+        console.log('tiempo boton Gustó Mucho Nvl 3: ', result)
+    }
+    
+    function mouseUpGM3(){
+        var UGM3 = 'Suelta el  boton Gustó Mucho Nvl 3'
+        console.log(UGM3);
+    }
+    
+    </script>
+
+   <!------------------------------------------------Pregunta 4-------------------------------------------------------------->
+
+   <dialog id="modal3">
+    <h2>¡¡¡Felcidiades Haz Compleatdo el Nivel 4!!!</h2>
+
+    <h3>Te gusto el nivel 4</h3>
+    <button class="button" id="GNada4" >Nada</button>
+    <button class="button" id="GPoco4" >Poco</button>
+    <button class="button" id="GRegular4" >Regular</button>
+    <button class="button" id="GBastante4" >Bastante</button>
+    <button class="button" id="GMucho4" >Mucho</button>
+    <br>
+
+    <h3>Que tan dificil te parecio el nivel 4:</h3> 
+    <button class="button" id="DNada4" onclick="window.modal3.onclick = () => game.loadLevel(levels[id = 4]);">Nada</button>
+    <button class="button" id="DPoco4" onclick="window.modal3.onclick = () => game.loadLevel(levels[id = 4]);">Poco</button>
+    <button class="button" id="DRegular4" onclick="window.modal3.onclick = () => game.loadLevel(levels[id = 4]);">Regular</button>
+    <button class="button" id="DBastante4" onclick="window.modal3.onclick = () => game.loadLevel(levels[id = 4]);">Bastante</button>
+    <button class="button" id="DMucho4" onclick="window.modal3.onclick = () => game.loadLevel(levels[id = 4]);">Mucho</button>
+    <br><br>
+
+    <button class="button" onclick="window.modal3.close();">Cerrar</button>
+
+
+ </dialog>
+
+ <script>
+
+//----------------------------------------Eventos preguntas Dificultad------------------------------------------------------>
+    
+//----------------------------------Eventos de la pregunta 4 Dif Nada-------------------------------------------------------->
+            document.getElementById("DNada4").addEventListener("mousedown", mouseDownD4);
+            document.getElementById("DNada4").addEventListener("mouseup", mouseUpD4);
+            
+            function mouseDownD4 (){
+                var DD4 = 'Click en boton dificultad Nada Nvl 4';
+                console.log(DD4);
+                const result = Date.now() - before
+                console.log('tiempo boton dificultad nada Nvl 4: ', result)
+            }
+            
+            function mouseUpD4(){
+                var UD4 = 'Suelta el  boton dificultad Nada Nvl 4'
+                console.log(UD4);
+            }
+            
+//----------------------------------Eventos de la pregunta 4 Dif Poco--------------------------------------------------------->
+    document.getElementById("DPoco4").addEventListener("mousedown", mouseDownP4);
+    document.getElementById("DPoco4").addEventListener("mouseup", mouseUpP4);
+    
+    function mouseDownP4 (){
+        var DP4 = 'Click en boton dificultad Poco Nvl 4';
+        console.log(DP4);
+        const result = Date.now() - before
+        console.log('tiempo boton dificultad poco Nvl 4: ', result)
+    }
+    
+    function mouseUpP4(){
+        var UD4 = 'Suelta el  boton dificultad Poco Nvl 4'
+        console.log(UD4);
+    }
+    
+//----------------------------------Eventos de la pregunta Dif 4 Regular--------------------------------------------------------->
+    document.getElementById("DRegular4").addEventListener("mousedown", mouseDownR4);
+    document.getElementById("DRegular4").addEventListener("mouseup", mouseUpR4);
+    
+    function mouseDownR4 (){
+        var DR4 = 'Click en boton dificultad Regular Nvl 4';
+        console.log(DR4);
+        const result = Date.now() - before
+        console.log('tiempo boton dificultad Regular Nvl 4: ', result)
+    }
+    
+    function mouseUpR4(){
+        var UR4 = 'Suelta el  boton dificultad Regular Nvl 4'
+        console.log(UR4);
+    }
+    
+//----------------------------------Eventos de la pregunta Dif 4 Bastante--------------------------------------------------------->
+    document.getElementById("DBastante4").addEventListener("mousedown", mouseDownB4);
+    document.getElementById("DBastante4").addEventListener("mouseup", mouseUpB4);
+    
+    function mouseDownB4(){
+        var DB4 = 'Click en boton dificultad Bastante Nvl 4';
+        console.log(DB4);
+        const result = Date.now() - before
+        console.log('tiempo boton dificultad Bastante Nvl 4: ', result)
+    }
+    
+    function mouseUpB4(){
+        var UB4 = 'Suelta el  boton dificultad Bastante Nvl 4'
+        console.log(UB4);
+    }
+    
+//----------------------------------Eventos de la pregunta Dif 4 Mucho--------------------------------------------------------->
+    document.getElementById("DMucho4").addEventListener("mousedown", mouseDownM4);
+    document.getElementById("DMucho4").addEventListener("mouseup", mouseUpM4);
+    
+    function mouseDownM4 (){
+        var DM4 = 'Click en boton dificultad Mucho Nvl 4';
+        console.log(DM4);
+        const result = Date.now() - before
+        console.log('tiempo boton dificultad Mucho Nvl 4: ', result)
+    }
+    
+    function mouseUpM4(){
+        var UM4 = 'Suelta el  boton dificultad Mucho Nvl 4'
+        console.log(UM4);
+    }
+    
+//-------------------------------------------Eventos preguntas Gustos------------------------------------------------------>
+    
+//----------------------------------Eventos de la pregunta 4 Gus Nada-------------------------------------------------------->
+    document.getElementById("GNada4").addEventListener("mousedown", mouseDownG4);
+    document.getElementById("DNada4").addEventListener("mouseup", mouseUpG4);
+            
+            function mouseDownG4 (){
+                var DGN4 = 'Click en boton Gustó Nada Nvl 4';
+                console.log(DGN4);
+                const result = Date.now() - before
+                console.log('tiempo boton Gustó nada Nvl 4: ', result)
+            }
+            
+            function mouseUpG4(){
+                var UGN4 = 'Suelta el  boton dificultad Nada Nvl 4'
+                console.log(UGN4);
+            }
+            
+//----------------------------------Eventos de la pregunta 4 gus Poco--------------------------------------------------------->
+    document.getElementById("GPoco4").addEventListener("mousedown", mouseDownGP4);
+    document.getElementById("GPoco4").addEventListener("mouseup", mouseUpGP4);
+    
+    function mouseDownGP4 (){
+        var DGP4 = 'Click en boton Gustó Poco Nvl 4';
+        console.log(DGP4);
+        const result = Date.now() - before
+        console.log('tiempo boton Gustó poco Nvl 4: ', result)
+    }
+    
+    function mouseUpGP4(){
+        var UGP4 = 'Suelta el  boton Gustó Poco Nvl 4'
+        console.log(UGP4);
+    }
+    
+//----------------------------------Eventos de la pregunta Gus 4 Regular--------------------------------------------------------->
+    document.getElementById("GRegular4").addEventListener("mousedown", mouseDownGR4);
+    document.getElementById("GRegular4").addEventListener("mouseup", mouseUpGR4);
+    
+    function mouseDownGR4 (){
+        var DGR4= 'Click en boton Gustó Regular Nvl 4';
+        console.log(DGR4);
+        const result = Date.now() - before
+        console.log('tiempo boton Gustó Regular Nvl 4: ', result)
+    }
+    
+    function mouseUpGR4(){
+        var UGR4 = 'Suelta el  boton Gustó Regular Nvl 4'
+        console.log(UGR4);
+    }
+    
+//----------------------------------Eventos de la pregunta gus 4 Bastante--------------------------------------------------------->
+    document.getElementById("GBastante4").addEventListener("mousedown", mouseDownGB4);
+    document.getElementById("GBastante4").addEventListener("mouseup", mouseUpGB4);
+    
+    function mouseDownGB4 (){
+        var DGB4 = 'Click en boton Gustó Bastante Nvl 4';
+        console.log(DGB4);
+        const result = Date.now() - before
+        console.log('tiempo boton Gustó Bastante Nvl 4: ', result)
+    }
+    
+    function mouseUpGB4(){
+        var UGB4 = 'Suelta el  boton Gustó Bastante Nvl 4'
+        console.log(UGB4);
+    }
+    
+    //----------------------------------Eventos de la pregunta gus 4 Mucho--------------------------------------------------------->
+    document.getElementById("GMucho4").addEventListener("mousedown", mouseDownGM4);
+    document.getElementById("GMucho4").addEventListener("mouseup", mouseUpGM4);
+    
+    function mouseDownGM4 (){
+        var DGM4 = 'Click en boton Gustó Mucho Nvl 4';
+        console.log(DGM4);
+        const result = Date.now() - before
+        console.log('tiempo boton Gustó Mucho Nvl 4: ', result)
+    }
+    
+    function mouseUpGM4(){
+        var UGM4 = 'Suelta el  boton Gustó Mucho Nvl 4'
+        console.log(UGM4);
+    }
+    
+    </script>
+
+    <!------------------------------------------------Pregunta 5-------------------------------------------------------------->
+
+    <dialog id="modal4">
+        <h2>¡¡¡Felcidiades haz logrado completar el nivel 5!!!</h2>
+    
+        <h3>Te gusto el nivel 5</h3>
+        <button class="button" id="GNada5" >Nada</button>
+        <button class="button" id="GPoco5" >Poco</button>
+        <button class="button" id="GRegular5" >Regular</button>
+        <button class="button" id="GBastante5" >Bastante</button>
+        <button class="button" id="GMucho5" >Mucho</button>
+        <br>
+    
+        <h3>Que tan dificil te parecio el nivel 5:</h3> 
+        <button class="button" id="DNada5" onclick="window.modal4.onclick = () => game.loadLevel(levels[id = 6]);">Nada</button>
+        <button class="button" id="DPoco5" onclick="window.modal4.onclick = () => game.loadLevel(levels[id = 6]);">Poco</button>
+        <button class="button" id="DRegular5" onclick="window.modal4.onclick = () => game.loadLevel(levels[id = 5]);">Regular</button>
+        <button class="button" id="DBastante5" onclick="window.modal4.onclick = () => game.loadLevel(levels[id = 5]);">Bastante</button>
+        <button class="button" id="DMucho5" onclick="window.modal4.onclick = () => game.loadLevel(levels[id = 5]);">Mucho</button>
+        <br> <br>
+
+        <button class="button" onclick="window.modal4.close();">Cerrar</button>
+
+    
+     </dialog>
+
+     <script>
+
+//----------------------------------------Eventos preguntas Dificultad------------------------------------------------------>
+        
+//----------------------------------Eventos de la pregunta 5 Dif Nada-------------------------------------------------------->
+                document.getElementById("DNada5").addEventListener("mousedown", mouseDownD5);
+                document.getElementById("DNada5").addEventListener("mouseup", mouseUpD5);
+                
+                function mouseDownD5 (){
+                    var DD5 = 'Click en boton dificultad Nada Nvl 5';
+                    console.log(DD5);
+                    const result = Date.now() - before
+                    console.log('tiempo boton dificultad nada Nvl 5: ', result)
+                }
+                
+                function mouseUpD5(){
+                    var UD5 = 'Suelta el  boton dificultad Nada Nvl 5'
+                    console.log(UD5);
+                }
+                
+//----------------------------------Eventos de la pregunta 5 Dif Poco--------------------------------------------------------->
+        document.getElementById("DPoco5").addEventListener("mousedown", mouseDownP5);
+        document.getElementById("DPoco5").addEventListener("mouseup", mouseUpP5);
+        
+        function mouseDownP5 (){
+            var DP5 = 'Click en boton dificultad Poco Nvl 5';
+            console.log(DP5);
+            const result = Date.now() - before
+            console.log('tiempo boton dificultad poco Nvl 5: ', result)
+        }
+        
+        function mouseUpP5(){
+            var UD5 = 'Suelta el  boton dificultad Poco Nvl 5'
+            console.log(UD5);
+        }
+        
+//----------------------------------Eventos de la pregunta Dif 5 Regular--------------------------------------------------------->
+        document.getElementById("DRegular5").addEventListener("mousedown", mouseDownR5);
+        document.getElementById("DRegular5").addEventListener("mouseup", mouseUpR5);
+        
+        function mouseDownR5(){
+            var DR5 = 'Click en boton dificultad Regular Nvl 5';
+            console.log(DR5);
+            const result = Date.now() - before
+            console.log('tiempo boton dificultad Regular Nvl 5: ', result)
+        }
+        
+        function mouseUpR5(){
+            var UR5 = 'Suelta el  boton dificultad Regular Nvl 5'
+            console.log(UR5);
+        }
+        
+//----------------------------------Eventos de la pregunta Dif 5 Bastante--------------------------------------------------------->
+        document.getElementById("DBastante5").addEventListener("mousedown", mouseDownB5);
+        document.getElementById("DBastante5").addEventListener("mouseup", mouseUpB5);
+        
+        function mouseDownB5 (){
+            var DB5 = 'Click en boton dificultad Bastante Nvl 5';
+            console.log(DB5);
+            const result = Date.now() - before
+            console.log('tiempo boton dificultad Bastante Nvl 5: ', result)
+        }
+        
+        function mouseUpB5(){
+            var UB5 = 'Suelta el  boton dificultad Bastante Nvl 5'
+            console.log(UB5);
+        }
+        
+//----------------------------------Eventos de la pregunta Dif  5 Mucho--------------------------------------------------------->
+        document.getElementById("DMucho5").addEventListener("mousedown", mouseDownM5);
+        document.getElementById("DMucho5").addEventListener("mouseup", mouseUpM5);
+        
+        function mouseDownM5 (){
+            var DM5 = 'Click en boton dificultad Mucho Nvl 5';
+            console.log(DM5);
+            const result = Date.now() - before
+            console.log('tiempo boton dificultad Mucho Nvl 5: ', result)
+        }
+        
+        function mouseUpM5(){
+            var UM1 = 'Suelta el  boton dificultad Mucho Nvl 1'
+            console.log(UM1);
+        }
+        
+//-------------------------------------------Eventos preguntas Gustos------------------------------------------------------>
+        
+//----------------------------------Eventos de la pregunta 5 Gus Nada-------------------------------------------------------->
+        document.getElementById("GNada5").addEventListener("mousedown", mouseDownG5);
+        document.getElementById("DNada5").addEventListener("mouseup", mouseUpG5);
+                
+                function mouseDownG5 (){
+                    var DGN5 = 'Click en boton Gustó Nada Nvl 5';
+                    console.log(DGN5);
+                    const result = Date.now() - before
+                    console.log('tiempo boton Gustó nada Nvl 5: ', result)
+                }
+                
+                function mouseUpG5(){
+                    var UGN5 = 'Suelta el  boton dificultad Nada Nvl 5'
+                    console.log(UGN5);
+                }
+                
+//----------------------------------Eventos de la pregunta 5 gus Poco--------------------------------------------------------->
+        document.getElementById("GPoco5").addEventListener("mousedown", mouseDownGP5);
+        document.getElementById("GPoco5").addEventListener("mouseup", mouseUpGP5);
+        
+        function mouseDownGP5 (){
+            var DGP5 = 'Click en boton Gustó Poco Nvl 5';
+            console.log(DGP5);
+            const result = Date.now() - before
+            console.log('tiempo boton Gustó poco Nvl 5: ', result)
+        }
+        
+        function mouseUpGP5(){
+            var UGP5 = 'Suelta el  boton Gustó Poco Nvl 5'
+            console.log(UGP5);
+        }
+        
+//----------------------------------Eventos de la pregunta Gus 5 Regular--------------------------------------------------------->
+        document.getElementById("GRegular5").addEventListener("mousedown", mouseDownGR5);
+        document.getElementById("GRegular5").addEventListener("mouseup", mouseUpGR5);
+        
+        function mouseDownGR5(){
+            var DGR5 = 'Click en boton Gustó Regular Nvl 5';
+            console.log(DGR5);
+            const result = Date.now() - before
+            console.log('tiempo boton Gustó Regular Nvl 5: ', result)
+        }
+        
+        function mouseUpGR5(){
+            var UGR5 = 'Suelta el  boton Gustó Regular Nvl 5'
+            console.log(UGR5);
+        }
+        
+        //----------------------------------Eventos de la pregunta gus 1 Bastante--------------------------------------------------------->
+        document.getElementById("GBastante5").addEventListener("mousedown", mouseDownGB5);
+        document.getElementById("GBastante5").addEventListener("mouseup", mouseUpGB5);
+        
+        function mouseDownGB5 (){
+            var DGB5 = 'Click en boton Gustó Bastante Nvl 5';
+            console.log(DGB5);
+            const result = Date.now() - before
+            console.log('tiempo boton Gustó Bastante Nvl 5: ', result)
+        }
+        
+        function mouseUpGB5(){
+            var UGB5 = 'Suelta el  boton Gustó Bastante Nvl 5'
+            console.log(UGB5);
+        }
+        
+//----------------------------------Eventos de la pregunta gus 5 Mucho--------------------------------------------------------->
+        document.getElementById("GMucho5").addEventListener("mousedown", mouseDownGM5);
+        document.getElementById("GMucho5").addEventListener("mouseup", mouseUpGM5);
+        
+        function mouseDownGM5 (){
+            var DGM5 = 'Click en boton Gustó Mucho Nvl 5';
+            console.log(DGM5);
+            const result = Date.now() - before
+            console.log('tiempo boton Gustó Mucho Nvl 5: ', result)
+        }
+        
+        function mouseUpGM5(){
+            var UGM5 = 'Suelta el  boton Gustó Mucho Nvl 5'
+            console.log(UGM5);
+        }
+        
+        </script>
+
+         <!------------------------------------------------Pregunta 6-------------------------------------------------------------->
+
+    <dialog id="modal5">
+        <h2>¡¡¡Felcidiades haz logrado completar el Nivel 6!!!</h2>
+    
+        <h3>Te gusto el nivel 6</h3>
+        <button class="button" id="GNada6" >Nada</button>
+        <button class="button" id="GPoco6" >Poco</button>
+        <button class="button" id="GRegular6" >Regular</button>
+        <button class="button" id="GBastante6" >Bastante</button>
+        <button class="button" id="GMucho6" >Mucho</button>
+        <br>
+    
+        <h3>Que tan dificil te parecio el nivel 6:</h3> 
+        <button class="button" id="DNada6" onclick="window.modal5.onclick = () => game.loadLevel(levels[id = 7]);">Nada</button>
+        <button class="button" id="DPoco6" onclick="window.modal5.onclick = () => game.loadLevel(levels[id = 7]);">Poco</button>
+        <button class="button" id="DRegular6" onclick="window.modal5.onclick = () => game.loadLevel(levels[id = 6]);">Regular</button>
+        <button class="button" id="DBastante6" onclick="window.modal5.onclick = () => game.loadLevel(levels[id = 6]);">Bastante</button>
+        <button class="button" id="DMucho6" onclick="window.modal5.onclick = () => game.loadLevel(levels[id = 6]);">Mucho</button>
+        <br><br>
+
+        <button class="button" onclick="window.modal5.close();">Cerrar</button>
+
+    
+     </dialog>
+
+     <script>
+
+//----------------------------------------Eventos preguntas Dificultad------------------------------------------------------>
+        
+//----------------------------------Eventos de la pregunta 6 Dif Nada-------------------------------------------------------->
+                document.getElementById("DNada6").addEventListener("mousedown", mouseDownD6);
+                document.getElementById("DNada6").addEventListener("mouseup", mouseUpD6);
+                
+                function mouseDownD6 (){
+                    var DD6 = 'Click en boton dificultad Nada Nvl 6';
+                    console.log(DD6);
+                    const result = Date.now() - before
+                    console.log('tiempo boton dificultad nada Nvl 6: ', result)
+                }
+                
+                function mouseUpD6(){
+                    var UD6 = 'Suelta el  boton dificultad Nada Nvl 6'
+                    console.log(UD6);
+                }
+                
+//----------------------------------Eventos de la pregunta 6 Dif Poco--------------------------------------------------------->
+        document.getElementById("DPoco6").addEventListener("mousedown", mouseDownP6);
+        document.getElementById("DPoco6").addEventListener("mouseup", mouseUpP6);
+        
+        function mouseDownP6 (){
+            var DP6 = 'Click en boton dificultad Poco Nvl 6';
+            console.log(DP6);
+            const result = Date.now() - before
+            console.log('tiempo boton dificultad poco Nvl 6: ', result)
+        }
+        
+        function mouseUpP6(){
+            var UD6 = 'Suelta el  boton dificultad Poco Nvl 6'
+            console.log(UD6);
+        }
+        
+//----------------------------------Eventos de la pregunta Dif 6 Regular--------------------------------------------------------->
+        document.getElementById("DRegular6").addEventListener("mousedown", mouseDownR6);
+        document.getElementById("DRegular6").addEventListener("mouseup", mouseUpR6);
+        
+        function mouseDownR6 (){
+            var DR6 = 'Click en boton dificultad Regular Nvl 6';
+            console.log(DR6);
+            const result = Date.now() - before
+            console.log('tiempo boton dificultad Regular Nvl 6: ', result)
+        }
+        
+        function mouseUpR6(){
+            var UR6 = 'Suelta el  boton dificultad Regular Nvl 6'
+            console.log(UR6);
+        }
+        
+//----------------------------------Eventos de la pregunta Dif 6 Bastante--------------------------------------------------------->
+        document.getElementById("DBastante6").addEventListener("mousedown", mouseDownB6);
+        document.getElementById("DBastante6").addEventListener("mouseup", mouseUpB6);
+        
+        function mouseDownB6 (){
+            var DB6 = 'Click en boton dificultad Bastante Nvl 6';
+            console.log(DB6);
+            const result = Date.now() - before
+            console.log('tiempo boton dificultad Bastante Nvl 6: ', result)
+        }
+        
+        function mouseUpB6(){
+            var UB6 = 'Suelta el  boton dificultad Bastante Nvl 6'
+            console.log(UB6);
+        }
+        
+//----------------------------------Eventos de la pregunta Dif  6 Mucho--------------------------------------------------------->
+        document.getElementById("DMucho6").addEventListener("mousedown", mouseDownM6);
+        document.getElementById("DMucho6").addEventListener("mouseup", mouseUpM6);
+        
+        function mouseDownM6 (){
+            var DM6 = 'Click en boton dificultad Mucho Nvl 6';
+            console.log(DM6);
+            const result = Date.now() - before
+            console.log('tiempo boton dificultad Mucho Nvl 6: ', result)
+        }
+        
+        function mouseUpM6(){
+            var UM6 = 'Suelta el  boton dificultad Mucho Nvl 6'
+            console.log(UM6);
+        }
+        
+//-------------------------------------------Eventos preguntas Gustos------------------------------------------------------>
+    
+//----------------------------------Eventos de la pregunta 6 Gus Nada-------------------------------------------------------->
+        document.getElementById("GNada6").addEventListener("mousedown", mouseDownG6);
+        document.getElementById("DNada6").addEventListener("mouseup", mouseUpG6);
+                
+                function mouseDownG6 (){
+                    var DGN6 = 'Click en boton Gustó Nada Nvl 6';
+                    console.log(DGN6);
+                    const result = Date.now() - before
+                    console.log('tiempo boton Gustó nada Nvl 6: ', result)
+                }
+                
+                function mouseUpG6(){
+                    var UGN6 = 'Suelta el  boton dificultad Nada Nvl 6'
+                    console.log(UGN6);
+                }
+                
+//----------------------------------Eventos de la pregunta 6 gus Poco--------------------------------------------------------->
+        document.getElementById("GPoco6").addEventListener("mousedown", mouseDownGP6);
+        document.getElementById("GPoco6").addEventListener("mouseup", mouseUpGP6);
+        
+        function mouseDownGP6 (){
+            var DGP6 = 'Click en boton Gustó Poco Nvl 6';
+            console.log(DGP6);
+            const result = Date.now() - before
+            console.log('tiempo boton Gustó poco Nvl 6: ', result)
+        }
+        
+        function mouseUpGP6(){
+            var UGP6 = 'Suelta el  boton Gustó Poco Nvl 6'
+            console.log(UGP6);
+        }
+        
+//----------------------------------Eventos de la pregunta Gus 6 Regular--------------------------------------------------------->
+        document.getElementById("GRegular6").addEventListener("mousedown", mouseDownGR6);
+        document.getElementById("GRegular6").addEventListener("mouseup", mouseUpGR6);
+        
+        function mouseDownGR6 (){
+            var DGR6 = 'Click en boton Gustó Regular Nvl 6';
+            console.log(DGR6);
+            const result = Date.now() - before
+            console.log('tiempo boton Gustó Regular Nvl 6: ', result)
+        }
+        
+        function mouseUpGR6(){
+            var UGR6 = 'Suelta el  boton Gustó Regular Nvl 6'
+            console.log(UGR6);
+        }
+        
+//----------------------------------Eventos de la pregunta gus 6 Bastante--------------------------------------------------------->
+        document.getElementById("GBastante6").addEventListener("mousedown", mouseDownGB6);
+        document.getElementById("GBastante6").addEventListener("mouseup", mouseUpGB6);
+        
+        function mouseDownGB6 (){
+            var DGB6 = 'Click en boton Gustó Bastante Nvl 6';
+            console.log(DGB6);
+            const result = Date.now() - before
+            console.log('tiempo boton Gustó Bastante Nvl 6: ', result)
+        }
+        
+        function mouseUpGB6(){
+            var UGB6 = 'Suelta el  boton Gustó Bastante Nvl 6'
+            console.log(UGB6);
+        }
+        
+//----------------------------------Eventos de la pregunta gus 6 Mucho--------------------------------------------------------->
+        document.getElementById("GMucho6").addEventListener("mousedown", mouseDownGM6);
+        document.getElementById("GMucho6").addEventListener("mouseup", mouseUpGM6);
+        
+        function mouseDownGM6 (){
+            var DGM6 = 'Click en boton Gustó Mucho Nvl 6';
+            console.log(DGM6);
+            const result = Date.now() - before
+            console.log('tiempo boton Gustó Mucho Nvl 6: ', result)
+        }
+        
+        function mouseUpGM6(){
+            var UGM6 = 'Suelta el  boton Gustó Mucho Nvl 6'
+            console.log(UGM6);
+        }
+        
+        </script>
+
+    <!------------------------------------------------Pregunta 7-------------------------------------------------------------->
+
+    <dialog id="modal6">
+        <h2>¡¡¡Felcidiades haz logrado completar el nivel 7 !!!</h2>
+    
+        <h3>Te gusto el nivel 7</h3>
+        <button class="button" id="GNada7" >Nada</button>
+        <button class="button" id="GPoco7" >Poco</button>
+        <button class="button" id="GRegular7" >Regular</button>
+        <button class="button" id="GBastante7" >Bastante</button>
+        <button class="button" id="GMucho7" >Mucho</button>
+        <br>
+    
+        <h3>Que tan dificil te parecio el nivel 7:</h3> 
+        <button class="button" id="DNada7" onclick="window.modal6.onclick = () => game.loadLevel(levels[id = 7]);">Nada</button>
+        <button class="button" id="DPoco7" onclick="window.modal6.onclick = () => game.loadLevel(levels[id = 7]);">Poco</button>
+        <button class="button" id="DRegular7" onclick="window.modal6.onclick = () => game.loadLevel(levels[id = 7]);">Regular</button>
+        <button class="button" id="DBastante7" onclick="window.modal6.onclick = () => game.loadLevel(levels[id = 7]);">Bastante</button>
+        <button class="button" id="DMucho7" onclick="window.modal6.onclick = () => game.loadLevel(levels[id = 7]);">Mucho</button>
+        <br><br>
+
+        <button class="button" onclick="window.modal6.close();">Cerrar</button>
+    
+     </dialog>
+
+     <script>
+
+//----------------------------------------Eventos preguntas Dificultad------------------------------------------------------>
+                
+//----------------------------------Eventos de la pregunta 7 Dif Nada-------------------------------------------------------->
+        document.getElementById("DNada7").addEventListener("mousedown", mouseDownD7);
+        document.getElementById("DNada7").addEventListener("mouseup", mouseUpD7);
+                        
+        function mouseDownD7 (){
+            var DD7 = 'Click en boton dificultad Nada Nvl 7';
+            console.log(DD7);
+            const result = Date.now() - before
+            console.log('tiempo boton dificultad nada Nvl 7: ', result)
+                }
+                        
+       function mouseUpD7(){
+            var UD7 = 'Suelta el  boton dificultad Nada Nvl 7'
+                console.log(UD7);
+                }
+                        
+//----------------------------------Eventos de la pregunta 7 Dif Poco--------------------------------------------------------->
+        document.getElementById("DPoco7").addEventListener("mousedown", mouseDownP7);
+        document.getElementById("DPoco7").addEventListener("mouseup", mouseUpP7);
+                
+        function mouseDownP7 (){
+            var DP7 = 'Click en boton dificultad Poco Nvl 7';
+            console.log(DP7);
+            const result = Date.now() - before
+            console.log('tiempo boton dificultad poco Nvl 7: ', result)
+                }
+                
+                function mouseUpP7(){
+                    var UD7 = 'Suelta el  boton dificultad Poco Nvl 7'
+                    console.log(UD7);
+                }
+                
+//----------------------------------Eventos de la pregunta Dif 7 Regular-----------------------------k----------------------->
+        document.getElementById("DRegular7").addEventListener("mousedown", mouseDownR7);
+        document.getElementById("DRegular7").addEventListener("mouseup", mouseUpR7);
+                
+        function mouseDownR7 (){
+            var DR7 = 'Click en boton dificultad Regular Nvl 7';
+            console.log(DR7);
+            const result = Date.now() - before
+            console.log('tiempo boton dificultad Regular Nvl 7: ', result)
+                }
+                
+        function mouseUpR7(){
+            var UR7 = 'Suelta el  boton dificultad Regular Nvl 7'
+            console.log(UR7);
+                }
+                
+//----------------------------------Eventos de la pregunta Dif 7 Bastante--------------------------------------------------------->
+        document.getElementById("DBastante7").addEventListener("mousedown", mouseDownB7);
+                document.getElementById("DBastante7").addEventListener("mouseup", mouseUpB7);
+                
+        function mouseDownB7 (){
+            var DB7 = 'Click en boton dificultad Bastante Nvl 7';
+            console.log(DB7);
+            const result = Date.now() - before
+            console.log('tiempo boton dificultad Bastante Nvl 7: ', result)
+                }
+                
+        function mouseUpB7(){
+            var UB7 = 'Suelta el  boton dificultad Bastante Nvl 7'
+            console.log(UB7);
+                }
+                
+//----------------------------------Eventos de la pregunta Dif 7 Mucho--------------------------------------------------------->
+        document.getElementById("DMucho7").addEventListener("mousedown", mouseDownM7);
+        document.getElementById("DMucho7").addEventListener("mouseup", mouseUpM7);
+                
+        function mouseDownM7 (){
+            var DM7 = 'Click en boton dificultad Mucho Nvl 7';
+            console.log(DM7);
+            const result = Date.now() - before
+            console.log('tiempo boton dificultad Mucho Nvl 7: ', result)
+                }
+                
+        function mouseUpM7(){
+            var UM7 = 'Suelta el  boton dificultad Mucho Nvl 7'
+            console.log(UM7);
+                }
+                
+//-------------------------------------------Eventos preguntas Gustos------------------------------------------------------>
+            
+//----------------------------------Eventos de la pregunta 7 Gus Nada-------------------------------------------------------->
+        document.getElementById("GNada7").addEventListener("mousedown", mouseDownG7);
+        document.getElementById("DNada7").addEventListener("mouseup", mouseUpG7);
+                        
+        function mouseDownG7 (){
+            var DGN7 = 'Click en boton Gustó Nada Nvl 7';
+            console.log(DGN7);
+            const result = Date.now() - before
+            console.log('tiempo boton Gustó nada Nvl 7: ', result)
+                }
+                        
+        function mouseUpG7(){
+            var UGN7 = 'Suelta el  boton dificultad Nada Nvl 7'
+            console.log(UGN7);
+                 }
+                        
+//----------------------------------Eventos de la pregunta 7 gus Poco--------------------------------------------------------->
+        document.getElementById("GPoco7").addEventListener("mousedown", mouseDownGP7);
+        document.getElementById("GPoco7").addEventListener("mouseup", mouseUpGP7);
+                
+        function mouseDownGP7 (){
+            var DGP7 = 'Click en boton Gustó Poco Nvl 7';
+            console.log(DGP7);
+            const result = Date.now() - before
+            console.log('tiempo boton Gustó poco Nvl 7: ', result)
+                }
+                
+        function mouseUpGP7(){
+            var UGP7 = 'Suelta el  boton Gustó Poco Nvl 7'
+            console.log(UGP7);
+                }
+                
+//----------------------------------Eventos de la pregunta Gus 7 Regular--------------------------------------------------------->
+        document.getElementById("GRegular7").addEventListener("mousedown", mouseDownGR7);
+        document.getElementById("GRegular7").addEventListener("mouseup", mouseUpGR7);
+                
+            function mouseDownGR7 (){
+                var DGR7 = 'Click en boton Gustó Regular Nvl 7';
+                console.log(DGR7);
+                const result = Date.now() - before
+                console.log('tiempo boton Gustó Regular Nvl 7: ', result)
+                }
+                
+            function mouseUpGR7(){
+                 var UGR7 = 'Suelta el  boton Gustó Regular Nvl 7'
+                console.log(UGR7);
+                }
+                
+//----------------------------------Eventos de la pregunta gus 7 Bastante--------------------------------------------------------->
+        document.getElementById("GBastante7").addEventListener("mousedown", mouseDownGB7);
+        document.getElementById("GBastante7").addEventListener("mouseup", mouseUpGB7);
+                
+        function mouseDownGB7 (){
+                var DGB7 = 'Click en boton Gustó Bastante Nvl 7';
+                console.log(DGB7);
+                const result = Date.now() - before
+                console.log('tiempo boton Gustó Bastante Nvl 7: ', result)
+                }
+                
+        function mouseUpGB7(){
+                var UGB7 = 'Suelta el  boton Gustó Bastante Nvl 7'
+                console.log(UGB7);
+                }
+                
+//----------------------------------Eventos de la pregunta gus 7 Mucho--------------------------------------------------------->
+        document.getElementById("GMucho7").addEventListener("mousedown", mouseDownGM7);
+        document.getElementById("GMucho7").addEventListener("mouseup", mouseUpGM7);
+                
+        function mouseDownGM7 (){
+            var DGM7 = 'Click en boton Gustó Mucho Nvl 7';
+            console.log(DGM7);
+            const result = Date.now() - before
+            console.log('tiempo boton Gustó Mucho Nvl 7: ', result)
+                }
+                
+        function mouseUpGM7(){
+            var UGM7 = 'Suelta el  boton Gustó Mucho Nvl 7'
+            console.log(UGM7);
+                }
+                
+                </script>
+     
+
+    <!------------------------------------------------Pregunta 8-------------------------------------------------------------->
+
+    <dialog id="modal7">
+        <h2>¡¡¡Felcidiades lo haz logrado!!!</h2>
+    
+        <h3>Te gusto el nivel 8</h3>
+        <button class="button" id="GNada8" >Nada</button>
+        <button class="button" id="GPoco8" >Poco</button>
+        <button class="button" id="GRegular8" >Regular</button>
+        <button class="button" id="GBastante8" >Bastante</button>
+        <button class="button" id="GMucho8" >Mucho</button>
+        <br>
+    
+        <h3>Que tan dificil te parecio el nivel 8:</h3> 
+        <button class="button" id="DNada8" onclick="window.modal7.onclick = () => game.loadLevel(levels[id = 9]);">Nada</button>
+        <button class="button" id="DPoco8" onclick="window.modal7.onclick = () => game.loadLevel(levels[id = 9]);">Poco</button>
+        <button class="button" id="DRegular8" onclick="window.modal7.onclick = () => game.loadLevel(levels[id = 8]);">Regular</button>
+        <button class="button" id="DBastante8" onclick="window.modal7.onclick = () => game.loadLevel(levels[id = 8]);">Bastante</button>
+        <button class="button" id="DMucho8" onclick="window.modal7.onclick = () => game.loadLevel(levels[id = 8]);">Mucho</button>
+        <br><br>
+
+        <button class="button" onclick="window.modal7.close();">Cerrar</button>
+    
+     </dialog>
+
+     <script>
+
+//----------------------------------------Eventos preguntas Dificultad------------------------------------------------------>
+                
+//----------------------------------Eventos de la pregunta 8 Dif Nada-------------------------------------------------------->
+        document.getElementById("DNada8").addEventListener("mousedown", mouseDownD8);
+        document.getElementById("DNada8").addEventListener("mouseup", mouseUpD8);
+                        
+        function mouseDownD8 (){
+            var DD8 = 'Click en boton dificultad Nada Nvl 8';
+            console.log(DD8);
+            const result = Date.now() - before
+            console.log('tiempo boton dificultad nada Nvl 8: ', result)
+                }
+                        
+        function mouseUpD8(){
+            var UD8 = 'Suelta el  boton dificultad Nada Nvl 8'
+            console.log(UD8);
+                 }
+                        
+//----------------------------------Eventos de la pregunta 8 Dif Poco--------------------------------------------------------->
+        document.getElementById("DPoco8").addEventListener("mousedown", mouseDownP8);
+        document.getElementById("DPoco8").addEventListener("mouseup", mouseUpP8);
+                
+        function mouseDownP8 (){
+            var DP8 = 'Click en boton dificultad Poco Nvl 8';
+            console.log(DP8);
+            const result = Date.now() - before
+            console.log('tiempo boton dificultad poco Nvl 8: ', result)
+                }
+                
+        function mouseUpP8(){
+            var UD8 = 'Suelta el  boton dificultad Poco Nvl 8'
+            console.log(UD8);
+                }
+                
+//----------------------------------Eventos de la pregunta Dif 8 Regular--------------------------------------------------------->
+        document.getElementById("DRegular8").addEventListener("mousedown", mouseDownR8);
+        document.getElementById("DRegular8").addEventListener("mouseup", mouseUpR8);
+                
+        function mouseDownR8 (){
+            var DR8 = 'Click en boton dificultad Regular Nvl 8';
+            console.log(DR8);
+            const result = Date.now() - before
+            console.log('tiempo boton dificultad Regular Nvl 8: ', result)
+                }
+                
+        function mouseUpR8(){
+            var UR8 = 'Suelta el  boton dificultad Regular Nvl 8'
+            console.log(UR8);
+                }
+                
+//----------------------------------Eventos de la pregunta Dif 8 Bastante--------------------------------------------------------->
+        document.getElementById("DBastante8").addEventListener("mousedown", mouseDownB8);
+        document.getElementById("DBastante8").addEventListener("mouseup", mouseUpB8);
+                
+        function mouseDownB8 (){
+            var DB8 = 'Click en boton dificultad Bastante Nvl 8';
+            console.log(DB8);
+            const result = Date.now() - before
+            console.log('tiempo boton dificultad Bastante Nvl 8: ', result)
+                }
+                
+        function mouseUpB8(){
+            var UB8 = 'Suelta el  boton dificultad Bastante Nvl 8'
+            console.log(UB8);
+                }
+                
+//----------------------------------Eventos de la pregunta Dif  8 Mucho--------------------------------------------------------->
+        document.getElementById("DMucho8").addEventListener("mousedown", mouseDownM8);
+        document.getElementById("DMucho8").addEventListener("mouseup", mouseUpM8);
+                
+        function mouseDownM8 (){
+            var DM8 = 'Click en boton dificultad Mucho Nvl 8';
+            console.log(DM8);
+            const result = Date.now() - before
+            console.log('tiempo boton dificultad Mucho Nvl 8: ', result)
+                }
+                
+        function mouseUpM8(){
+            var UM8 = 'Suelta el  boton dificultad Mucho Nvl 8'
+                    console.log(UM8);
+                }
+                
+//-------------------------------------------Eventos preguntas Gustos------------------------------------------------------>
+            
+//----------------------------------Eventos de la pregunta 8 Gus Nada-------------------------------------------------------->
+        document.getElementById("GNada8").addEventListener("mousedown", mouseDownG8);
+        document.getElementById("DNada8").addEventListener("mouseup", mouseUpG8);
+                        
+        function mouseDownG8 (){
+            var DGN8 = 'Click en boton Gustó Nada Nvl 8';
+            console.log(DGN8);
+            const result = Date.now() - before
+            console.log('tiempo boton Gustó nada Nvl 8: ', result)
+                }
+                        
+        function mouseUpG8(){
+            var UGN8 = 'Suelta el  boton dificultad Nada Nvl 8'
+            console.log(UGN8);
+                }
+                        
+//----------------------------------Eventos de la pregunta 8 gus Poco--------------------------------------------------------->
+        document.getElementById("GPoco8").addEventListener("mousedown", mouseDownGP8);
+        document.getElementById("GPoco8").addEventListener("mouseup", mouseUpGP8);
+                
+        function mouseDownGP8 (){
+            var DGP8 = 'Click en boton Gustó Poco Nvl 8';
+            console.log(DGP8);
+            const result = Date.now() - before
+            console.log('tiempo boton Gustó poco Nvl 8: ', result)
+                }
+                
+        function mouseUpGP8(){
+            var UGP8 = 'Suelta el  boton Gustó Poco Nvl 8'
+            console.log(UGP8);
+                }
+                
+//----------------------------------Eventos de la pregunta Gus 8 Regular--------------------------------------------------------->
+        document.getElementById("GRegular8").addEventListener("mousedown", mouseDownGR8);
+        document.getElementById("GRegular8").addEventListener("mouseup", mouseUpGR8);
+                
+        function mouseDownGR8 (){
+            var DGR8 = 'Click en boton Gustó Regular Nvl 8';
+            console.log(DGR8);
+            const result = Date.now() - before
+            console.log('tiempo boton Gustó Regular Nvl 8: ', result)
+                }
+                
+        function mouseUpGR8(){
+            var UGR8 = 'Suelta el  boton Gustó Regular Nvl 8'
+            console.log(UGR8);
+                }
+                
+//----------------------------------Eventos de la pregunta gus 8 Bastante--------------------------------------------------------->
+        document.getElementById("GBastante8").addEventListener("mousedown", mouseDownGB8);
+        document.getElementById("GBastante8").addEventListener("mouseup", mouseUpGB8);
+                
+        function mouseDownGB8 (){
+            var DGB8 = 'Click en boton Gustó Bastante Nvl 8';
+            console.log(DGB8);
+            const result = Date.now() - before
+            console.log('tiempo boton Gustó Bastante Nvl 8: ', result)
+                }
+                
+            function mouseUpGB8(){
+            var UGB8 = 'Suelta el  boton Gustó Bastante Nvl 8'
+            console.log(UGB8);
+                }
+                
+//----------------------------------Eventos de la pregunta gus 8 Mucho--------------------------------------------------------->
+        document.getElementById("GMucho8").addEventListener("mousedown", mouseDownGM8);
+        document.getElementById("GMucho8").addEventListener("mouseup", mouseUpGM8);
+                
+        function mouseDownGM8 (){
+            var DGM8 = 'Click en boton Gustó Mucho Nvl 8';
+            console.log(DGM8);
+            const result = Date.now() - before
+            console.log('tiempo boton Gustó Mucho Nvl 8: ', result)
+                }
+                
+        function mouseUpGM8(){
+            var UGM8 = 'Suelta el  boton Gustó Mucho Nvl 8'
+            console.log(UGM8);
+                }
+                
+</script>
+
+<!------------------------------------------------Pregunta 9-------------------------------------------------------------->
+
+    <dialog id="modal8">
+        <h2>¡¡¡Felcidiades lo haz logrado!!!</h2>
+    
+        <h3>Te gusto el nivel 9</h3>
+        <button class="button" id="GNada9">Nada</button>
+        <button class="button" id="GPoco9">Poco</button>
+        <button class="button" id="GRegular9">Regular</button>
+        <button class="button" id="GBastante9">Bastante</button>
+        <button class="button" id="GMucho9">Mucho</button>
+        <br>
+    
+        <h3>Que tan dificil te parecio el nivel 9:</h3> 
+        <button class="button" id="DNada9" onclick="window.modal8.onclick = () => game.loadLevel(levels[id = 9]);">Nada</button>
+        <button class="button" id="DPoco9" onclick="window.modal8.onclick = () => game.loadLevel(levels[id = 9]);">Poco</button>
+        <button class="button" id="DRegular9" onclick="window.modal8.onclick = () => game.loadLevel(levels[id = 8]);">Regular</button>
+        <button class="button" id="DBastante9" onclick="window.modal8.onclick = () => game.loadLevel(levels[id = 5]);">Bastante</button>
+        <button class="button" id="DMucho9" onclick="window.modal8.onclick = () => game.loadLevel(levels[id = 5]);">Mucho</button>
+        <br><br>
+
+        <button class="button" onclick="window.modal8.close();">cerrar</button>
+    
+     </dialog>
+
+
+     <script>
+//----------------------------------------Eventos preguntas Dificultad------------------------------------------------------>
+                
+//----------------------------------Eventos de la pregunta 9 Dif Nada-------------------------------------------------------->
+        document.getElementById("DNada9").addEventListener("mousedown", mouseDownD9);
+        document.getElementById("DNada9").addEventListener("mouseup", mouseUpD9);
+                        
+        function mouseDownD9 (){
+            var DD9 = 'Click en boton dificultad Nada Nvl 9';
+            console.log(DD9);
+            const result = Date.now() - before
+            console.log('tiempo boton dificultad nada Nvl 9: ', result)
+                }
+                        
+        function mouseUpD9(){
+            var UD9 = 'Suelta el  boton dificultad Nada Nvl 9'
+            console.log(UD9);
+                 }
+                        
+//----------------------------------Eventos de la pregunta 9 Dif Poco--------------------------------------------------------->
+        document.getElementById("DPoco9").addEventListener("mousedown", mouseDownP9);
+        document.getElementById("DPoco9").addEventListener("mouseup", mouseUpP9);
+                
+        function mouseDownP9 (){
+            var DP9 = 'Click en boton dificultad Poco Nvl 9';
+            console.log(DP9);
+            const result = Date.now() - before
+            console.log('tiempo boton dificultad poco Nvl 9: ', result)
+                }
+                
+        function mouseUpP9(){
+            var UD9 = 'Suelta el  boton dificultad Poco Nvl 9'
+            console.log(UD9);
+                }
+                
+//----------------------------------Eventos de la pregunta Dif 9 Regular--------------------------------------------------------->
+        document.getElementById("DRegular9").addEventListener("mousedown", mouseDownR9);
+        document.getElementById("DRegular9").addEventListener("mouseup", mouseUpR9);
+                
+        function mouseDownR9 (){
+            var DR9 = 'Click en boton dificultad Regular Nvl 9';
+            console.log(DR9);
+            const result = Date.now() - before
+            console.log('tiempo boton dificultad Regular Nvl 9: ', result)
+                }
+                
+        function mouseUpR9(){
+            var UR9 = 'Suelta el  boton dificultad Regular Nvl 9'
+            console.log(UR9);
+                }
+                
+//----------------------------------Eventos de la pregunta Dif 9 Bastante--------------------------------------------------------->
+        document.getElementById("DBastante9").addEventListener("mousedown", mouseDownB9);
+        document.getElementById("DBastante9").addEventListener("mouseup", mouseUpB9);
+                
+        function mouseDownB9 (){
+            var DB9 = 'Click en boton dificultad Bastante Nvl 9';
+            console.log(DB9);
+            const result = Date.now() - before
+            console.log('tiempo boton dificultad Bastante Nvl 9: ', result)
+                }
+                
+        function mouseUpB9(){
+            var UB9 = 'Suelta el  boton dificultad Bastante Nvl 9'
+            console.log(UB9);
+                }
+                
+//----------------------------------Eventos de la pregunta Dif  9 Mucho--------------------------------------------------------->
+        document.getElementById("DMucho9").addEventListener("mousedown", mouseDownM9);
+        document.getElementById("DMucho9").addEventListener("mouseup", mouseUpM9);
+                
+        function mouseDownM9 (){
+            var DM9 = 'Click en boton dificultad Mucho Nvl 9';
+            console.log(DM9);
+            const result = Date.now() - before
+            console.log('tiempo boton dificultad Mucho Nvl 9: ', result)
+                }
+                
+        function mouseUpM9(){
+            var UM9 = 'Suelta el  boton dificultad Mucho Nvl 9'
+                    console.log(UM9);
+                }
+                
+//-------------------------------------------Eventos preguntas Gustos------------------------------------------------------>
+            
+//----------------------------------Eventos de la pregunta 9 Gus Nada-------------------------------------------------------->
+        document.getElementById("GNada9").addEventListener("mousedown", mouseDownG9);
+        document.getElementById("DNada9").addEventListener("mouseup", mouseUpG9);
+                        
+        function mouseDownG9 (){
+            var DGN9 = 'Click en boton Gustó Nada Nvl 9';
+            console.log(DGN9);
+            const result = Date.now() - before
+            console.log('tiempo boton Gustó nada Nvl 9: ', result)
+                }
+                        
+        function mouseUpG9(){
+            var UGN9 = 'Suelta el  boton dificultad Nada Nvl 9'
+            console.log(UGN9);
+                }
+                        
+//----------------------------------Eventos de la pregunta 9 gus Poco--------------------------------------------------------->
+        document.getElementById("GPoco9").addEventListener("mousedown", mouseDownGP9);
+        document.getElementById("GPoco9").addEventListener("mouseup", mouseUpGP9);
+                
+        function mouseDownGP9 (){
+            var DGP9 = 'Click en boton Gustó Poco Nvl 9';
+            console.log(DGP9);
+            const result = Date.now() - before
+            console.log('tiempo boton Gustó poco Nvl 9: ', result)
+                }
+                
+        function mouseUpGP9(){
+            var UGP9 = 'Suelta el  boton Gustó Poco Nvl 9'
+            console.log(UGP9);
+                }
+                
+//----------------------------------Eventos de la pregunta Gus 9 Regular--------------------------------------------------------->
+        document.getElementById("GRegular9").addEventListener("mousedown", mouseDownGR9);
+        document.getElementById("GRegular9").addEventListener("mouseup", mouseUpGR9);
+                
+        function mouseDownGR9 (){
+            var DGR9 = 'Click en boton Gustó Regular Nvl 9';
+            console.log(DGR9);
+            const result = Date.now() - before
+            console.log('tiempo boton Gustó Regular Nvl 9: ', result)
+                }
+                
+        function mouseUpGR9(){
+            var UGR9 = 'Suelta el  boton Gustó Regular Nvl 9'
+            console.log(UGR9);
+                }
+                
+//----------------------------------Eventos de la pregunta gus 9 Bastante--------------------------------------------------------->
+        document.getElementById("GBastante9").addEventListener("mousedown", mouseDownGB9);
+        document.getElementById("GBastante9").addEventListener("mouseup", mouseUpGB9);
+                
+        function mouseDownGB9 (){
+            var DGB9 = 'Click en boton Gustó Bastante Nvl 9';
+            console.log(DGB9);
+            const result = Date.now() - before
+            console.log('tiempo boton Gustó Bastante Nvl 9: ', result)
+                }
+                
+            function mouseUpGB9(){
+            var UGB9 = 'Suelta el  boton Gustó Bastante Nvl 9'
+            console.log(UGB9);
+                }
+                
+//----------------------------------Eventos de la pregunta gus 9 Mucho--------------------------------------------------------->
+        document.getElementById("GMucho9").addEventListener("mousedown", mouseDownGM9);
+        document.getElementById("GMucho9").addEventListener("mouseup", mouseUpGM9);
+                
+        function mouseDownGM9 (){
+            var DGM9 = 'Click en boton Gustó Mucho Nvl 9';
+            console.log(DGM9);
+            const result = Date.now() - before
+            console.log('tiempo boton Gustó Mucho Nvl 9: ', result)
+                }
+                
+        function mouseUpGM9(){
+            var UGM9 = 'Suelta el  boton Gustó Mucho Nvl 9'
+            console.log(UGM9);
+                }
+                
+</script>
+
+
+    <!------------------------------------------------Pregunta 10-------------------------------------------------------------->
+
+    <dialog id="modal9">
+        <h2>¡¡¡Felcidiades lo haz logrado!!!</h2>
+    
+        <h3>Te gusto el nivel 10</h3>
+        <button class="button" id="GNada10" >Nada</button>
+        <button class="button" id="GPoco10" >Poco</button>
+        <button class="button" id="GRegular10" >Regular</button>
+        <button class="button" id="GBastante10">Bastante</button>
+        <button class="button" id="GMucho10" >Mucho</button>
+        <br>
+    
+        <h3>Que tan dificil te parecio el nivel 10:</h3> 
+        <button class="button" id="DNada10" onclick="window.modal9.onclick = () => game.loadLevel(levels[id = 10]);">Nada</button>
+        <button class="button" id="DPoco10" onclick="window.modal9.onclick = () => game.loadLevel(levels[id = 10]);">Poco</button>
+        <button class="button" id="DRegular10" onclick="window.modal9.onclick = () => game.loadLevel(levels[id = 6]);">Regular</button>
+        <button class="button" id="DBastante10" onclick="window.modal9.onclick = () => game.loadLevel(levels[id = 6]);">Bastante</button>
+        <button class="button" id="DMucho10" onclick="window.modal9.onclick = () => game.loadLevel(levels[id = 6]);">Mucho</button>
+        <br><br>
+
+        <button class="button" onclick="window.modal9.close();">Cerrar</button>
+    
+     </dialog>
+
+     <script>
+ //----------------------------------------Eventos preguntas Dificultad------------------------------------------------------>
+                
+//----------------------------------Eventos de la pregunta 10 Dif Nada-------------------------------------------------------->
+        document.getElementById("DNada10").addEventListener("mousedown", mouseDownD10);
+        document.getElementById("DNada10").addEventListener("mouseup", mouseUpD10);
+                        
+        function mouseDownD10 (){
+            var DD10 = 'Click en boton dificultad Nada Nvl 10';
+            console.log(DD10);
+            const result = Date.now() - before
+            console.log('tiempo boton dificultad nada Nvl 10: ', result)
+                }
+                        
+        function mouseUpD10(){
+            var UD10 = 'Suelta el  boton dificultad Nada Nvl 10'
+            console.log(UD10);
+                 }
+                        
+//----------------------------------Eventos de la pregunta 10 Dif Poco--------------------------------------------------------->
+        document.getElementById("DPoco10").addEventListener("mousedown", mouseDownP10);
+        document.getElementById("DPoco10").addEventListener("mouseup", mouseUpP10);
+                
+        function mouseDownP10 (){
+            var DP10 = 'Click en boton dificultad Poco Nvl 10';
+            console.log(DP10);
+            const result = Date.now() - before
+            console.log('tiempo boton dificultad poco Nvl 10: ', result)
+                }
+                
+        function mouseUpP10(){
+            var UD10 = 'Suelta el  boton dificultad Poco Nvl 10'
+            console.log(UD10);
+                }
+                
+//----------------------------------Eventos de la pregunta Dif 10 Regular--------------------------------------------------------->
+        document.getElementById("DRegular10").addEventListener("mousedown", mouseDownR10);
+        document.getElementById("DRegular10").addEventListener("mouseup", mouseUpR10);
+                
+        function mouseDownR10 (){
+            var DR10 = 'Click en boton dificultad Regular Nvl 10';
+            console.log(DR10);
+            const result = Date.now() - before
+            console.log('tiempo boton dificultad Regular Nvl 10: ', result)
+                }
+                
+        function mouseUpR10(){
+            var UR10 = 'Suelta el  boton dificultad Regular Nvl 10'
+            console.log(UR10);
+                }
+                
+//----------------------------------Eventos de la pregunta Dif 10 Bastante--------------------------------------------------------->
+        document.getElementById("DBastante10").addEventListener("mousedown", mouseDownB10);
+        document.getElementById("DBastante10").addEventListener("mouseup", mouseUpB10);
+                
+        function mouseDownB10 (){
+            var DB10 = 'Click en boton dificultad Bastante Nvl 10';
+            console.log(DB10);
+            const result = Date.now() - before
+            console.log('tiempo boton dificultad Bastante Nvl 10: ', result)
+                }
+                
+        function mouseUpB10(){
+            var UB10 = 'Suelta el  boton dificultad Bastante Nvl 10'
+            console.log(UB10);
+                }
+                
+//----------------------------------Eventos de la pregunta Dif  10 Mucho--------------------------------------------------------->
+        document.getElementById("DMucho10").addEventListener("mousedown", mouseDownM10);
+        document.getElementById("DMucho10").addEventListener("mouseup", mouseUpM10);
+                
+        function mouseDownM10 (){
+            var DM10 = 'Click en boton dificultad Mucho Nvl 10';
+            console.log(DM10);
+            const result = Date.now() - before
+            console.log('tiempo boton dificultad Mucho Nvl 10: ', result)
+                }
+                
+        function mouseUpM10(){
+            var UM10 = 'Suelta el  boton dificultad Mucho Nvl 10'
+                    console.log(UM10);
+                }
+                
+//-------------------------------------------Eventos preguntas Gustos------------------------------------------------------>
+            
+//----------------------------------Eventos de la pregunta 10 Gus Nada-------------------------------------------------------->
+        document.getElementById("GNada10").addEventListener("mousedown", mouseDownG10);
+        document.getElementById("DNada10").addEventListener("mouseup", mouseUpG10);
+                        
+        function mouseDownG10 (){
+            var DGN10 = 'Click en boton Gustó Nada Nvl 10';
+            console.log(DGN10);
+            const result = Date.now() - before
+            console.log('tiempo boton Gustó nada Nvl 10: ', result)
+                }
+                        
+        function mouseUpG10(){
+            var UGN10 = 'Suelta el  boton dificultad Nada Nvl 10'
+            console.log(UGN10);
+                }
+                        
+//----------------------------------Eventos de la pregunta 10 gus Poco--------------------------------------------------------->
+        document.getElementById("GPoco10").addEventListener("mousedown", mouseDownGP10);
+        document.getElementById("GPoco10").addEventListener("mouseup", mouseUpGP10);
+                
+        function mouseDownGP10 (){
+            var DGP10 = 'Click en boton Gustó Poco Nvl 10';
+            console.log(DGP10);
+            const result = Date.now() - before
+            console.log('tiempo boton Gustó poco Nvl 10: ', result)
+                }
+                
+        function mouseUpGP10(){
+            var UGP10 = 'Suelta el  boton Gustó Poco Nvl 10'
+            console.log(UGP10);
+                }
+                
+//----------------------------------Eventos de la pregunta Gus 10 Regular--------------------------------------------------------->
+        document.getElementById("GRegular10").addEventListener("mousedown", mouseDownGR10);
+        document.getElementById("GRegular10").addEventListener("mouseup", mouseUpGR10);
+                
+        function mouseDownGR10 (){
+            var DGR10 = 'Click en boton Gustó Regular Nvl 10';
+            console.log(DGR10);
+            const result = Date.now() - before
+            console.log('tiempo boton Gustó Regular Nvl 10: ', result)
+                }
+                
+        function mouseUpGR10(){
+            var UGR10 = 'Suelta el  boton Gustó Regular Nvl 10'
+            console.log(UGR10);
+                }
+                
+//----------------------------------Eventos de la pregunta gus 10 Bastante--------------------------------------------------------->
+        document.getElementById("GBastante10").addEventListener("mousedown", mouseDownGB10);
+        document.getElementById("GBastante10").addEventListener("mouseup", mouseUpGB10);
+                
+        function mouseDownGB10 (){
+            var DGB10 = 'Click en boton Gustó Bastante Nvl 10';
+            console.log(DGB10);
+            const result = Date.now() - before
+            console.log('tiempo boton Gustó Bastante Nvl 10: ', result)
+                }
+                
+            function mouseUpGB10(){
+            var UGB10 = 'Suelta el  boton Gustó Bastante Nvl 10'
+            console.log(UGB10);
+                }
+                
+//----------------------------------Eventos de la pregunta gus 10 Mucho--------------------------------------------------------->
+        document.getElementById("GMucho10").addEventListener("mousedown", mouseDownGM10);
+        document.getElementById("GMucho10").addEventListener("mouseup", mouseUpGM10);
+                
+        function mouseDownGM10 (){
+            var DGM10 = 'Click en boton Gustó Mucho Nvl 10';
+            console.log(DGM10);
+            const result = Date.now() - before
+            console.log('tiempo boton Gustó Mucho Nvl 10: ', result)
+                }
+                
+        function mouseUpGM10(){
+            var UGM10 = 'Suelta el  boton Gustó Mucho Nvl 10'
+            console.log(UGM10);
+                }
+                
+</script>
+
+    <!------------------------------------------------Pregunta 11-------------------------------------------------------------->
+
+    <dialog id="modal10">
+        <h2>¡¡¡Felcidiades lo haz logrado!!!</h2>
+    
+        <h3>Te gusto el nivel 11</h3>
+        <button class="button" id="GNada11" >Nada</button>
+        <button class="button" id="GPoco11" >Poco</button>
+        <button class="button" id="GRegular11" >Regular</button>
+        <button class="button" id="GBastante11">Bastante</button>
+        <button class="button" id="GMucho11" >Mucho</button>
+        <br>
+    
+        <h3>Que tan dificil te parecio el nivel 11:</h3> 
+        <button class="button" id="DNada11" onclick="window.modal10.onclick = () => game.loadLevel(levels[id = 13]);">Nada</button>
+        <button class="button" id="DPoco11" onclick="window.modal10.onclick = () => game.loadLevel(levels[id = 13]);">Poco</button>
+        <button class="button" id="DRegular11" onclick="window.modal10.onclick = () => game.loadLevel(levels[id = 11]);">Regular</button>
+        <button class="button" id="DBastante11" onclick="window.modal10.onclick = () => game.loadLevel(levels[id = 11]);">Bastante</button>
+        <button class="button" id="DMucho11" onclick="window.modal10.onclick = () => game.loadLevel(levels[id = 11]);">Mucho</button>
+        <br><br>
+
+        <button class="button" onclick="window.modal10.close();">Cerrar</button>
+    
+     </dialog>
+
+     <script>
+//----------------------------------------Eventos preguntas Dificultad------------------------------------------------------>
+                       
+//----------------------------------Eventos de la pregunta 11 Dif Nada-------------------------------------------------------->
+        document.getElementById("DNada11").addEventListener("mousedown", mouseDownD11);
+        document.getElementById("DNada11").addEventListener("mouseup", mouseUpD11);
+                               
+        function mouseDownD11 (){
+            var DD11 = 'Click en boton dificultad Nada Nvl 11';
+            console.log(DD11);
+            const result = Date.now() - before
+            console.log('tiempo boton dificultad nada Nvl 11: ', result)
+                }
+                               
+        function mouseUpD11(){
+            var UD11 = 'Suelta el  boton dificultad Nada Nvl 11'
+            console.log(UD11);
+                }
+                               
+//----------------------------------Eventos de la pregunta 11 Dif Poco--------------------------------------------------------->
+        document.getElementById("DPoco11").addEventListener("mousedown", mouseDownP11);
+        document.getElementById("DPoco11").addEventListener("mouseup", mouseUpP11);
+                       
+        function mouseDownP11 (){
+            var DP11 = 'Click en boton dificultad Poco Nvl 11';
+            console.log(DP11);
+            const result = Date.now() - before
+            console.log('tiempo boton dificultad poco Nvl 11: ', result)
+                }
+                       
+        function mouseUpP11(){
+            var UD11 = 'Suelta el  boton dificultad Poco Nvl 11'
+            console.log(UD11);
+                }
+                       
+//----------------------------------Eventos de la pregunta Dif 11 Regular--------------------------------------------------------->
+        document.getElementById("DRegular11").addEventListener("mousedown", mouseDownR11);
+        document.getElementById("DRegular11").addEventListener("mouseup", mouseUpR11);
+                       
+        function mouseDownR11 (){
+            var DR11 = 'Click en boton dificultad Regular Nvl 11';
+            console.log(DR11);
+            const result = Date.now() - before
+            console.log('tiempo boton dificultad Regular Nvl 11: ', result)
+                }
+                       
+        function mouseUpR11(){
+            var UR11 = 'Suelta el  boton dificultad Regular Nvl 11'
+            console.log(UR11);
+                }
+                       
+//----------------------------------Eventos de la pregunta Dif 11 Bastante--------------------------------------------------------->
+        document.getElementById("DBastante11").addEventListener("mousedown", mouseDownB11);
+        document.getElementById("DBastante11").addEventListener("mouseup", mouseUpB11);
+                       
+        function mouseDownB11 (){
+            var DB11 = 'Click en boton dificultad Bastante Nvl 11';
+            console.log(DB11);
+            const result = Date.now() - before
+            console.log('tiempo boton dificultad Bastante Nvl 11: ', result)
+                }
+                       
+        function mouseUpB11(){
+            var UB11 = 'Suelta el  boton dificultad Bastante Nvl 11'
+            console.log(UB11);
+                }
+                       
+//----------------------------------Eventos de la pregunta Dif  11 Mucho--------------------------------------------------------->
+        document.getElementById("DMucho11").addEventListener("mousedown", mouseDownM11);
+        document.getElementById("DMucho11").addEventListener("mouseup", mouseUpM11);
+                       
+        function mouseDownM11 (){
+                var DM11 = 'Click en boton dificultad Mucho Nvl 11';
+                console.log(DM11);
+                const result = Date.now() - before
+                console.log('tiempo boton dificultad Mucho Nvl 11: ', result)
+                }
+                       
+        function mouseUpM11(){
+                var UM11 = 'Suelta el  boton dificultad Mucho Nvl 11'
+                console.log(UM11);
+                }
+                       
+//-------------------------------------------Eventos preguntas Gustos------------------------------------------------------>
+                   
+//----------------------------------Eventos de la pregunta 11 Gus Nada-------------------------------------------------------->
+        document.getElementById("GNada11").addEventListener("mousedown", mouseDownG11);
+        document.getElementById("DNada11").addEventListener("mouseup", mouseUpG11);
+                               
+        function mouseDownG11 (){
+                var DGN11 = 'Click en boton Gustó Nada Nvl 11';
+                console.log(DGN11);
+                const result = Date.now() - before
+                console.log('tiempo boton Gustó nada Nvl 11: ', result)
+                 }
+                               
+        function mouseUpG11(){
+                var UGN11 = 'Suelta el  boton dificultad Nada Nvl 11'
+                console.log(UGN11);
+                 }
+                               
+//----------------------------------Eventos de la pregunta 11 gus Poco--------------------------------------------------------->
+        document.getElementById("GPoco11").addEventListener("mousedown", mouseDownGP11);
+        document.getElementById("GPoco11").addEventListener("mouseup", mouseUpGP11);
+                       
+        function mouseDownGP11 (){
+                var DGP11 = 'Click en boton Gustó Poco Nvl 11';
+                console.log(DGP11);
+                const result = Date.now() - before
+                console.log('tiempo boton Gustó poco Nvl 11: ', result)
+                 }
+                       
+        function mouseUpGP11(){
+                var UGP11 = 'Suelta el  boton Gustó Poco Nvl 11'
+                console.log(UGP11);
+                 }
+                       
+//----------------------------------Eventos de la pregunta Gus 11 Regular--------------------------------------------------------->
+        document.getElementById("GRegular11").addEventListener("mousedown", mouseDownGR11);
+        document.getElementById("GRegular11").addEventListener("mouseup", mouseUpGR11);
+                       
+        function mouseDownGR11 (){
+                var DGR11 = 'Click en boton Gustó Regular Nvl 11';
+                console.log(DGR11);
+                const result = Date.now() - before
+                console.log('tiempo boton Gustó Regular Nvl 11: ', result)
+                 }
+                       
+        function mouseUpGR11(){
+                var UGR11 = 'Suelta el  boton Gustó Regular Nvl 11'
+                console.log(UGR11);
+                 }
+                       
+//----------------------------------Eventos de la pregunta gus 11 Bastante--------------------------------------------------------->
+        document.getElementById("GBastante11").addEventListener("mousedown", mouseDownGB11);
+        document.getElementById("GBastante11").addEventListener("mouseup", mouseUpGB11);
+                       
+        function mouseDownGB11 (){
+                var DGB11 = 'Click en boton Gustó Bastante Nvl 11';
+                console.log(DGB11);
+                const result = Date.now() - before
+                console.log('tiempo boton Gustó Bastante Nvl 11: ', result)
+                  }
+                       
+        function mouseUpGB11(){
+                var UGB11 = 'Suelta el  boton Gustó Bastante Nvl 11'
+                console.log(UGB11);
+                  }
+                       
+//----------------------------------Eventos de la pregunta gus 11 Mucho--------------------------------------------------------->
+        document.getElementById("GMucho11").addEventListener("mousedown", mouseDownGM11);
+        document.getElementById("GMucho11").addEventListener("mouseup", mouseUpGM11);
+                       
+        function mouseDownGM11 (){
+                var DGM11 = 'Click en boton Gustó Mucho Nvl 11';
+                console.log(DGM11);
+                const result = Date.now() - before
+                console.log('tiempo boton Gustó Mucho Nvl 11: ', result)
+                  }
+                       
+        function mouseUpGM11(){
+                var UGM11 = 'Suelta el  boton Gustó Mucho Nvl 11'
+                   console.log(UGM11);
+                 }
+                       
+       </script>
+
+    <!------------------------------------------------Pregunta 12-------------------------------------------------------------->
+
+    <dialog id="modal11">
+        <h2>¡¡¡Felcidiades lo haz logrado!!!</h2>
+    
+        <h3>Te gusto el nivel 12</h3>
+        <button class="button" id="GNada12">Nada</button>
+        <button class="button" id="GPoco12">Poco</button>
+        <button class="button" id="GRegular12">Regular</button>
+        <button class="button" id="GBastante12">Bastante</button>
+        <button class="button" id="GMucho12" >Mucho</button>
+        <br>
+    
+        <h3>Que tan dificil te parecio el nivel 12:</h3> 
+        <button class="button" id="DNada12" onclick="window.modal11.onclick = () => game.loadLevel(levels[id = 13]);">Nada</button>
+        <button class="button" id="DPoco12" onclick="window.modal11.onclick = () => game.loadLevel(levels[id = 13]);">Poco</button>
+        <button class="button" id="DRegular12" onclick="window.modal11.onclick = () => game.loadLevel(levels[id = 12]);">Regular</button>
+        <button class="button" id="DBastante12" onclick="window.modal11.onclick = () => game.loadLevel(levels[id = 12]);">Bastante</button>
+        <button class="button" id="DMucho12" onclick="window.modal11.onclick = () => game.loadLevel(levels[id = 12]);">Mucho</button>
+        <br><br>
+
+        <button class="button" onclick="window.modal11.close();">Cerrar</button>
+    
+     </dialog>
+
+     <script>
+//----------------------------------------Eventos preguntas Dificultad------------------------------------------------------>
+                       
+//----------------------------------Eventos de la pregunta 12 Dif Nada-------------------------------------------------------->
+        document.getElementById("DNada12").addEventListener("mousedown", mouseDownD12);
+        document.getElementById("DNada12").addEventListener("mouseup", mouseUpD12);
+                               
+        function mouseDownD12 (){
+            var DD12 = 'Click en boton dificultad Nada Nvl 12';
+            console.log(DD12);
+            const result = Date.now() - before
+            console.log('tiempo boton dificultad nada Nvl 12: ', result)
+                }
+                               
+        function mouseUpD12(){
+            var UD12 = 'Suelta el  boton dificultad Nada Nvl 12'
+            console.log(UD12);
+                }
+                               
+//----------------------------------Eventos de la pregunta 12 Dif Poco--------------------------------------------------------->
+        document.getElementById("DPoco12").addEventListener("mousedown", mouseDownP12);
+        document.getElementById("DPoco12").addEventListener("mouseup", mouseUpP12);
+                       
+        function mouseDownP12 (){
+            var DP12 = 'Click en boton dificultad Poco Nvl 12';
+            console.log(DP12);
+            const result = Date.now() - before
+            console.log('tiempo boton dificultad poco Nvl 12: ', result)
+                }
+                       
+        function mouseUpP12(){
+        var UD12 = 'Suelta el  boton dificultad Poco Nvl 12'
+            console.log(UD12);
+                }
+                       
+//----------------------------------Eventos de la pregunta Dif 12 Regular--------------------------------------------------------->
+        document.getElementById("DRegular12").addEventListener("mousedown", mouseDownR12);
+        document.getElementById("DRegular12").addEventListener("mouseup", mouseUpR12);
+                       
+        function mouseDownR12 (){
+            var DR12 = 'Click en boton dificultad Regular Nvl 12';
+            console.log(DR12);
+            const result = Date.now() - before
+            console.log('tiempo boton dificultad Regular Nvl 12: ', result)
+                }
+                       
+        function mouseUpR12(){
+            var UR12 = 'Suelta el  boton dificultad Regular Nvl 12'
+            console.log(UR12);
+                }
+                       
+//----------------------------------Eventos de la pregunta Dif 12 Bastante--------------------------------------------------------->
+        document.getElementById("DBastante12").addEventListener("mousedown", mouseDownB12);
+        document.getElementById("DBastante12").addEventListener("mouseup", mouseUpB12);
+                       
+        function mouseDownB12 (){
+            var DB12 = 'Click en boton dificultad Bastante Nvl 12';
+            console.log(DB12);
+            const result = Date.now() - before
+            console.log('tiempo boton dificultad Bastante Nvl 12: ', result)
+                }
+                       
+        function mouseUpB12(){
+            var UB12 = 'Suelta el  boton dificultad Bastante Nvl 12'
+            console.log(UB12);
+                }
+                       
+//----------------------------------Eventos de la pregunta Dif  12 Mucho--------------------------------------------------------->
+        document.getElementById("DMucho12").addEventListener("mousedown", mouseDownM12);
+        document.getElementById("DMucho12").addEventListener("mouseup", mouseUpM12);
+                       
+        function mouseDownM12 (){
+            var DM12 = 'Click en boton dificultad Mucho Nvl 12';
+            console.log(DM12);
+            const result = Date.now() - before
+            console.log('tiempo boton dificultad Mucho Nvl 12: ', result)
+                }
+                       
+        function mouseUpM12(){
+            var UM12 = 'Suelta el  boton dificultad Mucho Nvl 12'
+                           console.log(UM12);
+                }
+                       
+//-------------------------------------------Eventos preguntas Gustos------------------------------------------------------>
+                   
+//----------------------------------Eventos de la pregunta 12 Gus Nada-------------------------------------------------------->
+        document.getElementById("GNada12").addEventListener("mousedown", mouseDownG12);
+        document.getElementById("DNada12").addEventListener("mouseup", mouseUpG12);
+                               
+        function mouseDownG12 (){
+            var DGN12 = 'Click en boton Gustó Nada Nvl 12';
+            console.log(DGN12);
+            const result = Date.now() - before
+            console.log('tiempo boton Gustó nada Nvl 12: ', result)
+                }
+                               
+        function mouseUpG12(){
+            var UGN12 = 'Suelta el  boton dificultad Nada Nvl 12'
+            console.log(UGN12);
+                }
+                               
+//----------------------------------Eventos de la pregunta 12 gus Poco--------------------------------------------------------->
+        document.getElementById("GPoco12").addEventListener("mousedown", mouseDownGP12);
+        document.getElementById("GPoco12").addEventListener("mouseup", mouseUpGP12);
+                       
+        function mouseDownGP12 (){
+            var DGP12 = 'Click en boton Gustó Poco Nvl 12';
+            console.log(DGP12);
+            const result = Date.now() - before
+            console.log('tiempo boton Gustó poco Nvl 12: ', result)
+                }
+                       
+        function mouseUpGP12(){
+            var UGP12 = 'Suelta el  boton Gustó Poco Nvl 12'
+            console.log(UGP12);
+                }
+                       
+//----------------------------------Eventos de la pregunta Gus 12 Regular--------------------------------------------------------->
+        document.getElementById("GRegular12").addEventListener("mousedown", mouseDownGR12);
+        document.getElementById("GRegular12").addEventListener("mouseup", mouseUpGR12);
+                       
+        function mouseDownGR12 (){
+            var DGR12 = 'Click en boton Gustó Regular Nvl 12';
+            console.log(DGR12);
+            const result = Date.now() - before
+            console.log('tiempo boton Gustó Regular Nvl 12: ', result)
+                }
+                       
+        function mouseUpGR12(){
+            var UGR12 = 'Suelta el  boton Gustó Regular Nvl 12'
+            console.log(UGR12);
+                }
+                       
+//----------------------------------Eventos de la pregunta gus 12 Bastante--------------------------------------------------------->
+        document.getElementById("GBastante12").addEventListener("mousedown", mouseDownGB12);
+        document.getElementById("GBastante12").addEventListener("mouseup", mouseUpGB12);
+                       
+        function mouseDownGB12 (){
+            var DGB12 = 'Click en boton Gustó Bastante Nvl 12';
+            console.log(DGB12);
+            const result = Date.now() - before
+            console.log('tiempo boton Gustó Bastante Nvl 12: ', result)
+                }
+                       
+        function mouseUpGB12(){
+            var UGB12 = 'Suelta el  boton Gustó Bastante Nvl 12'
+            console.log(UGB12);
+                }
+                       
+//----------------------------------Eventos de la pregunta gus 12 Mucho--------------------------------------------------------->
+        document.getElementById("GMucho12").addEventListener("mousedown", mouseDownGM12);
+        document.getElementById("GMucho12").addEventListener("mouseup", mouseUpGM12);
+                       
+        function mouseDownGM12 (){
+            var DGM12 = 'Click en boton Gustó Mucho Nvl 12';
+            console.log(DGM12);
+            const result = Date.now() - before
+            console.log('tiempo boton Gustó Mucho Nvl 12: ', result)
+                }
+                       
+        function mouseUpGM12(){
+            var UGM12 = 'Suelta el  boton Gustó Mucho Nvl 12'
+            console.log(UGM12);
+                }
+                       
+       </script>
+
+    <!------------------------------------------------Pregunta 13-------------------------------------------------------------->
+
+    <dialog id="modal12">
+        <h2>¡¡¡Felcidiades lo haz logrado!!!</h2>
+    
+        <h3>Te gusto el nivel 13</h3>
+        <button class="button" id="GNada13" >Nada</button>
+        <button class="button" id="GPoco13" >Poco</button>
+        <button class="button" id="GRegular13" >Regular</button>
+        <button class="button" id="GBastante13">Bastante</button>
+        <button class="button" id="GMucho13" >Mucho</button>
+        <br>
+    
+        <h3>Que tan dificil te parecio el nivel 13:</h3> 
+        <button class="button" id="DNada13" onclick="window.modal12.onclick = () => game.loadLevel(levels[id = 13]);">Nada</button>
+        <button class="button" id="DPoco13" onclick="window.modal12.onclick = () => game.loadLevel(levels[id = 13]);">Poco</button>
+        <button class="button" id="DRegular13" onclick="window.modal12.onclick = () => game.loadLevel(levels[id = 10]);">Regular</button>
+        <button class="button" id="DBastante13" onclick="window.modal12.onclick = () => game.loadLevel(levels[id = 10]);">Bastante</button>
+        <button class="button" id="DMucho13" onclick="window.modal12.onclick = () => game.loadLevel(levels[id = 10]);">Mucho</button>
+        <br><br>
+
+        <button class="button" onclick="window.modal12.close();">Cerrar</button>
+    
+     </dialog>
+
+     <script>
+//----------------------------------------Eventos preguntas Dificultad------------------------------------------------------>
+                       
+//----------------------------------Eventos de la pregunta 10 Dif Nada-------------------------------------------------------->
+        document.getElementById("DNada13").addEventListener("mousedown", mouseDownD13);
+        document.getElementById("DNada13").addEventListener("mouseup", mouseUpD13);
+                               
+        function mouseDownD13 (){
+            var DD13 = 'Click en boton dificultad Nada Nvl 13';
+            console.log(DD13);
+            const result = Date.now() - before
+            console.log('tiempo boton dificultad nada Nvl 13: ', result)
+                }
+                               
+        function mouseUpD13(){
+            var UD13 = 'Suelta el  boton dificultad Nada Nvl 13'
+            console.log(UD13);
+                 }
+                               
+//----------------------------------Eventos de la pregunta 13 Dif Poco--------------------------------------------------------->
+        document.getElementById("DPoco13").addEventListener("mousedown", mouseDownP13);
+        document.getElementById("DPoco13").addEventListener("mouseup", mouseUpP13);
+                       
+        function mouseDownP13 (){
+            var DP13 = 'Click en boton dificultad Poco Nvl 13';
+            console.log(DP13);
+            const result = Date.now() - before
+            console.log('tiempo boton dificultad poco Nvl 13: ', result)
+                 }
+                       
+        function mouseUpP13(){
+            var UD13 = 'Suelta el  boton dificultad Poco Nvl 13'
+            console.log(UD13);
+                 }
+                       
+//----------------------------------Eventos de la pregunta Dif 13 Regular--------------------------------------------------------->
+        document.getElementById("DRegular13").addEventListener("mousedown", mouseDownR13);
+        document.getElementById("DRegular13").addEventListener("mouseup", mouseUpR13);
+                       
+        function mouseDownR13 (){
+            var DR13 = 'Click en boton dificultad Regular Nvl 13';
+            console.log(DR13);
+            const result = Date.now() - before
+            console.log('tiempo boton dificultad Regular Nvl 13: ', result)
+                 }
+                       
+        function mouseUpR13(){
+            var UR13 = 'Suelta el  boton dificultad Regular Nvl 13'
+            console.log(UR13);
+                 }
+                       
+//----------------------------------Eventos de la pregunta Dif 13 Bastante--------------------------------------------------------->
+        document.getElementById("DBastante13").addEventListener("mousedown", mouseDownB13);
+        document.getElementById("DBastante13").addEventListener("mouseup", mouseUpB13);
+                       
+       function mouseDownB13 (){
+            var DB13 = 'Click en boton dificultad Bastante Nvl 13';
+            console.log(DB13);
+            const result = Date.now() - before
+            console.log('tiempo boton dificultad Bastante Nvl 13: ', result)
+                 }
+                       
+        function mouseUpB13(){
+            var UB13 = 'Suelta el  boton dificultad Bastante Nvl 13'
+            console.log(UB13);
+                 }
+                       
+//----------------------------------Eventos de la pregunta Dif  13 Mucho--------------------------------------------------------->
+        document.getElementById("DMucho13").addEventListener("mousedown", mouseDownM13);
+        document.getElementById("DMucho13").addEventListener("mouseup", mouseUpM13);
+                       
+        function mouseDownM13 (){
+            var DM13 = 'Click en boton dificultad Mucho Nvl 13';
+            console.log(DM13);
+            const result = Date.now() - before
+            console.log('tiempo boton dificultad Mucho Nvl 13: ', result)
+                 }
+                       
+        function mouseUpM13(){
+            var UM13 = 'Suelta el  boton dificultad Mucho Nvl 13'
+            console.log(UM13);
+                 }
+                       
+//-------------------------------------------Eventos preguntas Gustos------------------------------------------------------>
+                   
+//----------------------------------Eventos de la pregunta 13 Gus Nada-------------------------------------------------------->
+        document.getElementById("GNada13").addEventListener("mousedown", mouseDownG13);
+        document.getElementById("DNada13").addEventListener("mouseup", mouseUpG13);
+                               
+        function mouseDownG13 (){
+            var DGN13 = 'Click en boton Gustó Nada Nvl 13';
+            console.log(DGN13);
+            const result = Date.now() - before
+            console.log('tiempo boton Gustó nada Nvl 13: ', result)
+                 }
+                               
+        function mouseUpG13(){
+            var UGN13 = 'Suelta el  boton dificultad Nada Nvl 13'
+            console.log(UGN13);
+                 }
+                               
+//----------------------------------Eventos de la pregunta 13 gus Poco--------------------------------------------------------->
+        document.getElementById("GPoco13").addEventListener("mousedown", mouseDownGP13);
+        document.getElementById("GPoco13").addEventListener("mouseup", mouseUpGP13);
+                       
+        function mouseDownGP13 (){
+            var DGP13 = 'Click en boton Gustó Poco Nvl 13';
+            console.log(DGP13);
+            const result = Date.now() - before
+            console.log('tiempo boton Gustó poco Nvl 13: ', result)
+                 }
+                       
+        function mouseUpGP13(){
+            var UGP13 = 'Suelta el  boton Gustó Poco Nvl 13'
+            console.log(UGP13);
+                 }
+                       
+//----------------------------------Eventos de la pregunta Gus 13 Regular--------------------------------------------------------->
+        document.getElementById("GRegular13").addEventListener("mousedown", mouseDownGR13);
+        document.getElementById("GRegular13").addEventListener("mouseup", mouseUpGR13);
+                       
+        function mouseDownGR13 (){
+            var DGR13 = 'Click en boton Gustó Regular Nvl 13';
+            console.log(DGR13);
+            const result = Date.now() - before
+            console.log('tiempo boton Gustó Regular Nvl 13: ', result)
+                 }
+                       
+        function mouseUpGR13(){
+            var UGR13 = 'Suelta el  boton Gustó Regular Nvl 13'
+            console.log(UGR13);
+                 }
+                       
+//----------------------------------Eventos de la pregunta gus 13 Bastante--------------------------------------------------------->
+        document.getElementById("GBastante13").addEventListener("mousedown", mouseDownGB10);
+        document.getElementById("GBastante13").addEventListener("mouseup", mouseUpGB10);
+                       
+        function mouseDownGB13 (){
+            var DGB13 = 'Click en boton Gustó Bastante Nvl 13';
+            console.log(DGB13);
+            const result = Date.now() - before
+            console.log('tiempo boton Gustó Bastante Nvl 13: ', result)
+                 }
+                       
+        function mouseUpGB13(){
+            var UGB13 = 'Suelta el  boton Gustó Bastante Nvl 13'
+            console.log(UGB13);
+                 }
+                       
+//----------------------------------Eventos de la pregunta gus 13 Mucho--------------------------------------------------------->
+        document.getElementById("GMucho13").addEventListener("mousedown", mouseDownGM13);
+        document.getElementById("GMucho13").addEventListener("mouseup", mouseUpGM13);
+                       
+        function mouseDownGM13 (){
+            var DGM13 = 'Click en boton Gustó Mucho Nvl 13';
+            console.log(DGM13);
+            const result = Date.now() - before
+            console.log('tiempo boton Gustó Mucho Nvl 13: ', result)
+                 }
+                       
+        function mouseUpGM13(){
+            var UGM13 = 'Suelta el  boton Gustó Mucho Nvl 13'
+            console.log(UGM13);
+                 }
+                       
+       </script>
+
+    <!------------------------------------------------Pregunta 14-------------------------------------------------------------->
+
+    <dialog id="modal13">
+        <h2>¡¡¡Felcidiades lo haz logrado!!!</h2>
+    
+        <h3>Te gusto el nivel 14</h3>
+        <button class="button" >Nada</button>
+        <button class="button" >Poco</button>
+        <button class="button" >Regular</button>
+        <button class="button">Bastante</button>
+        <button class="button" >Mucho</button>
+        <br>
+    
+        <h3>Que tan dificil te parecio el nivel 14:</h3> 
+        <button class="button" onclick="window.modal13.onclick = () => game.loadLevel(levels[id=14]);">Nada</button>
+        <button class="button" onclick="window.modal13.onclick = () => game.loadLevel(levels[id=14]);">Poco</button>
+        <button class="button" onclick="window.modal13.onclick = () => game.loadLevel(levels[id=10]);">Regular</button>
+        <button class="button" onclick="window.modal13.onclick = () => game.loadLevel(levels[id=10]);">Bastante</button>
+        <button class="button" onclick="window.modal13.onclick = () => game.loadLevel(levels[id=10]);">Mucho</button>
+        <br><br>
+
+        <button class="button" onclick="window.modal13.close();">Cerrar</button>
+
+    
+     </dialog>
+
+    <!------------------------------------------------Pregunta 15-------------------------------------------------------------->
+
+    <dialog id="modal14">
+        <h2>¡¡¡Felcidiades lo haz logrado!!!</h2>
+    
+        <h3>Te gusto el nivel 15</h3>
+        <button class="button" >Nada</button>
+        <button class="button" >Poco</button>
+        <button class="button" >Regular</button>
+        <button class="button">Bastante</button>
+        <button class="button" >Mucho</button>
+        <br>
+    
+        <h3>Que tan dificil te parecio el nivel 15:</h3> 
+        <button class="button" onclick="window.modal14.onclick = () => game.loadLevel(levels[id=16]);">Nada</button>
+        <button class="button" onclick="window.modal14.onclick = () => game.loadLevel(levels[id=16]);">Poco</button>
+        <button class="button" onclick="window.modal14.onclick = () => game.loadLevel(levels[id=15]);">Regular</button>
+        <button class="button" onclick="window.modal14.onclick = () => game.loadLevel(levels[id=15]);">Bastante</button>
+        <button class="button" onclick="window.modal14.onclick = () => game.loadLevel(levels[id=15]);">Mucho</button>
+        <br><br>
+
+        <button class="button" onclick="window.modal14.close();">Cerrar</button>
+
+     </dialog>
+
+    <!------------------------------------------------Pregunta 16-------------------------------------------------------------->
+
+    <dialog id="modal15">
+        <h2>¡¡¡Felcidiades lo haz logrado!!!</h2>
+    
+        <h3>Te gusto el nivel 16</h3>
+        <button class="button" >Nada</button>
+        <button class="button" >Poco</button>
+        <button class="button" >Regular</button>
+        <button class="button">Bastante</button>
+        <button class="button" >Mucho</button>
+        <br>
+    
+        <h3>Que tan dificil te parecio el nivel 16:</h3> 
+        <button class="button" onclick="window.modal15.onclick = () => game.loadLevel(levels[id=17]);">Nada</button>
+        <button class="button" onclick="window.modal15.onclick = () => game.loadLevel(levels[id=17]);">Poco</button>
+        <button class="button" onclick="window.modal15.onclick = () => game.loadLevel(levels[id=16]);">Regular</button>
+        <button class="button" onclick="window.modal15.onclick = () => game.loadLevel(levels[id=16]);">Bastante</button>
+        <button class="button" onclick="window.modal15.onclick = () => game.loadLevel(levels[id=16]);">Mucho</button>
+        <br><br>
+
+        <button class="button" onclick="window.modal15.close();">Cerrar</button>
+    
+     </dialog>
+
+    <!------------------------------------------------Pregunta 17-------------------------------------------------------------->
+
+    <dialog id="modal16">
+        <h2>¡¡¡Felcidiades lo haz logrado!!!</h2>
+    
+        <h3>Te gusto el nivel 17</h3>
+        <button class="button" >Nada</button>
+        <button class="button" >Poco</button>
+        <button class="button" >Regular</button>
+        <button class="button">Bastante</button>
+        <button class="button" >Mucho</button>
+        <br>
+
+        <h3>Que tan dificil te parecio el nivel 16:</h3> 
+        <button class="button" onclick="window.modal16.onclick = () => game.loadLevel(levels[id=18]);">Nada</button>
+        <button class="button" onclick="window.modal16.onclick = () => game.loadLevel(levels[id=18]);">Poco</button>
+        <button class="button" onclick="window.modal16.onclick = () => game.loadLevel(levels[id=17]);">Regular</button>
+        <button class="button" onclick="window.modal16.onclick = () => game.loadLevel(levels[id=17]);">Bastante</button>
+        <button class="button" onclick="window.modal16.onclick = () => game.loadLevel(levels[id=17]);">Mucho</button>
+        <br><br>
+
+        <button class="button" onclick="window.modal16.close();">Cerrar</button>
+    
+     </dialog>
+
+    <!------------------------------------------------Pregunta 18-------------------------------------------------------------->
+
+    <dialog id="modal17">
+        <h2>¡¡¡Felcidiades lo haz logrado!!!</h2>
+    
+        <h3>Te gusto el nivel 18</h3>
+        <button class="button" >Nada</button>
+        <button class="button" >Poco</button>
+        <button class="button" >Regular</button>
+        <button class="button">Bastante</button>
+        <button class="button" >Mucho</button>
+        <br>
+    
+        <h3>Que tan dificil te parecio el nivel 18:</h3> 
+        <button class="button" onclick="window.modal17.onclick = () => game.loadLevel(levels[id=18]);">Nada</button>
+        <button class="button" onclick="window.modal17.onclick = () => game.loadLevel(levels[id=18]);">Poco</button>
+        <button class="button" onclick="window.modal17.onclick = () => game.loadLevel(levels[id=14]);">Regular</button>
+        <button class="button" onclick="window.modal17.onclick = () => game.loadLevel(levels[id=14]);">Bastante</button>
+        <button class="button" onclick="window.modal17.onclick = () => game.loadLevel(levels[id=14]);">Mucho</button>
+        <br><br>
+
+        <button class="button" onclick="window.modal17.close();">Cerrar</button>
+    
+     </dialog>
+
+    <!------------------------------------------------Pregunta 19-------------------------------------------------------------->
+
+    <dialog id="modal18">
+        <h2>¡¡¡Felcidiades lo haz logrado!!!</h2>
+    
+        <h3>Te gusto el nivel 19</h3>
+        <button class="button" >Nada</button>
+        <button class="button" >Poco</button>
+        <button class="button" >Regular</button>
+        <button class="button">Bastante</button>
+        <button class="button" >Mucho</button>
+        <br>
+    
+        <h3>Que tan dificil te parecio el nivel 19:</h3> 
+        <button class="button" onclick="window.modal18.onclick = () => game.loadLevel(levels[id=19]);">Nada</button>
+        <button class="button" onclick="window.modal18.onclick = () => game.loadLevel(levels[id=19]);">Poco</button>
+        <button class="button" onclick="window.modal18.onclick = () => game.loadLevel(levels[id=14]);">Regular</button>
+        <button class="button" onclick="window.modal18.onclick = () => game.loadLevel(levels[id=14]);">Bastante</button>
+        <button class="button" onclick="window.modal18.onclick = () => game.loadLevel(levels[id=14]);">Mucho</button>
+        <br><br>
+
+        <button class="button" onclick="window.modal18.close();">Cerrar</button>
+    
+     </dialog>
+
+    <!------------------------------------------------Pregunta 20-------------------------------------------------------------->
+
+    <dialog id="modal19">
+        <h2>¡¡¡Felcidiades lo haz logrado!!!</h2>
+    
+        <h3>Te gusto el nivel 20</h3>
+        <button class="button" >Nada</button>
+        <button class="button" >Poco</button>
+        <button class="button" >Regular</button>
+        <button class="button">Bastante</button>
+        <button class="button" >Mucho</button>
+        <br>
+    
+        <h3>Que tan dificil te parecio el nivel 20:</h3> 
+        <button class="button" onclick="window.modal19.onclick = () => alert('Lo haz Logrado');">Nada</button>
+        <button class="button" onclick="window.modal19.onclick = () => alert('lo haz logrado');">Poco</button>
+        <button class="button" onclick="window.modal19.onclick = () => game.loadLevel(levels[id=14]);">Regular</button>
+        <button class="button" onclick="window.modal19.onclick = () => game.loadLevel(levels[id=14]);">Bastante</button>
+        <button class="button" onclick="window.modal19.onclick = () => game.loadLevel(levels[id=14]);">Mucho</button>
+        <br><br>
+
+        <button class="button" onclick="window.modal19.close();">Cerrar</button>
+    
+     </dialog>
+    
+
+
+</body>
+
+</html>
+
